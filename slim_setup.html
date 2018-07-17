@@ -1,0 +1,136 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Quicker, smaller setup &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment" href="assignment.html" />
+    <link rel="prev" title="Spread of a distribution with number of samples" href="samples_and_spread.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="quicker-smaller-setup">
+<h1>Quicker, smaller setup<a class="headerlink" href="#quicker-smaller-setup" title="Permalink to this headline">¶</a></h1>
+<p>This setup is quicker than the setup in <a class="reference internal" href="setup_beforehand.html"><span class="doc">Setup beforehand</span></a>, and uses
+a lot less disk space, but it is more involved.</p>
+<p>This is the setup for Windows.</p>
+<p>Use this page for setup if you are on a slow laptop, a laptop without much
+disk space, or you are installing on a borrowed laptop where you need to get
+going quickly.</p>
+<ul>
+<li><p class="first">Open your web browser, and go to <a class="reference external" href="https://www.python.org/downloads/release/python-366">https://www.python.org/downloads/release/python-366</a></p>
+</li>
+<li><p class="first">Download the <a class="reference external" href="https://www.python.org/ftp/python/3.6.6/python-3.6.6.exe">Windows x86 executable installer</a>.</p>
+</li>
+<li><p class="first">Run the installer.  At the initial screen, <em>unselect</em> “Install launcher for
+all users”, and <em>select</em> “Add Python 3.6 to PATH”. Here’s a screenshot of
+the correct options:</p>
+<img alt="_images/python36_install_screen.png" src="_images/python36_install_screen.png" />
+<p>When the options are right, click on “Install Now” to continue the
+installation.  Click “Close” when the installation is done.</p>
+</li>
+<li><p class="first">Click on the Windows start icon and type “powershell”, press Return.  The
+Windows Powershell terminal application will open.</p>
+</li>
+<li><p class="first">At the Powershell prompt, type the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">matplotlib</span> <span class="n">jupyter</span>
+</pre></div>
+</div>
+<p>and press return.  Wait while the packages install, it will be about
+5 minutes, on a slow machine.</p>
+</li>
+<li><p class="first">At the Powershell prompt, type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+<p>to open the Jupyter notebook in your browser.  You may be asked which
+browser you would like to use for the Jupyter App.  I suggest Google Chrome
+or Firefox, if you have it.</p>
+</li>
+<li><p class="first">Whenever you want to open the Jupyter notebook, open Powershell, and type
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> as above.</p>
+</li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="samples_and_spread.html" title="previous chapter">Spread of a distribution with number of samples</a></li>
+      <li>Next: <a href="assignment.html" title="next chapter">Assignment</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/slim_setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/slim_setup.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

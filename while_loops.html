@@ -1,0 +1,133 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>While loops &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Shuffle" href="shuffle.html" />
+    <link rel="prev" title="and, or in expressions" href="and_or.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="while-loops">
+<h1>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is rather like the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop (see: <a class="reference internal" href="print_if_for.html"><span class="doc">Print, If and For</span></a>).</p>
+<p>Here is a simple <code class="docutils literal notranslate"><span class="pre">while</span></code> loop where I add up all the numbers between 1 and
+21 inclusive:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We use a variable to keep track of the total</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We use a variable to keep track of what number we&#39;re on</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">current_number</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">current_number</span> <span class="o">&lt;</span> <span class="mi">22</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">current_number</span>
+<span class="gp">... </span>    <span class="n">current_number</span> <span class="o">=</span> <span class="n">current_number</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+<span class="go">231</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, like the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, tests a condition, here
+<code class="docutils literal notranslate"><span class="pre">current_number</span> <span class="pre">&lt;</span> <span class="pre">22</span></code>.  Like the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, there are indented
+statements after the condition test, that only run if the condition test is
+True.  The difference is that a while loop keeps running the indented
+statements until the condition is True.  So, the first time through, when
+<code class="docutils literal notranslate"><span class="pre">current_number</span></code> is set to 0, the condition will be True (0 is less than
+22), and the body of the while loop executes.  But, when the while loop
+finishes running <code class="docutils literal notranslate"><span class="pre">current_number</span> <span class="pre">=</span> <span class="pre">current_number</span> <span class="pre">+</span> <span class="pre">1</span></code> at the end of the
+block, it goes back and checks the conditional again.  Now <code class="docutils literal notranslate"><span class="pre">current_number</span></code>
+is 1, but this is still less than 22, and so we proceed to run <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">=</span>
+<span class="pre">total</span> <span class="pre">+</span> <span class="pre">current_number</span></code> and the rest of the statements in the body.  We do
+this until the condition is False, and then the while loop stops and the
+program continues after the end of the while loop.</p>
+<p>Exercises:</p>
+<ul class="simple">
+<li>Use a version of the while loop above to add up all the numbers between 10
+and 21, inclusive.</li>
+<li>Use a version of the while loop above to add up all the even numbers between
+0 and 20, inclusive.</li>
+<li>Make an empty list, and use a while loop to go through all the numbers
+between 5 and 30, inclusive, appending them to the list.</li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="and_or.html" title="previous chapter">and, or in expressions</a></li>
+      <li>Next: <a href="shuffle.html" title="next chapter">Shuffle</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/while_loops.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/while_loops.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

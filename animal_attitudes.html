@@ -1,0 +1,402 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Attitudes to animal research &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Three girls in a family of four" href="number_of_girls.html" />
+    <link rel="prev" title="Schooling and fertility" href="school_and_fertility.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="attitudes-to-animal-research">
+<h1>Attitudes to animal research<a class="headerlink" href="#attitudes-to-animal-research" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-the-data">
+<h2>Introduction to the data<a class="headerlink" href="#introduction-to-the-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="animal_attitudes.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<p>Here we are going to try to analyze the data from this survey:</p>
+<p><a class="reference external" href="https://www.ipsos.com/ipsos-mori/en-uk/attitudes-animal-research-2016">https://www.ipsos.com/ipsos-mori/en-uk/attitudes-animal-research-2016</a></p>
+<p>You can download the raw data from here:</p>
+<p><a class="reference external" href="https://discover.ukdataservice.ac.uk/catalogue?sn=8059">https://discover.ukdataservice.ac.uk/catalogue?sn=8059</a></p>
+<p>To be helpful, I have unpacked the tab-delimited data file for you, and also
+converted the data dictionary document to a PDF:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/ols_animal_research_survey_data_2016.tab" download=""><code class="xref download docutils literal notranslate"><span class="pre">tab-delimited</span> <span class="pre">data</span> <span class="pre">file</span></code></a>;</li>
+<li><a class="reference download internal" href="_downloads/ols_animal_research_survey_data_2016_ukda_data_dictionary.pdf" download=""><code class="xref download docutils literal notranslate"><span class="pre">data</span> <span class="pre">dictionary</span> <span class="pre">PDF</span> <span class="pre">file</span></code></a>.</li>
+</ul>
+<p>Download the data file to the directory containing this Notebook.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#: Load pandas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#: Read file into data frame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;ols_animal_research_survey_data_2016.tab&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display the data frame:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#: Display the data frame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">        ID  Q1  Q2a  Q2b  Q3a  Q3b   ...</span>
+<span class="go">0    10150   2    1    2    5    1   ...</span>
+<span class="go">1    10170   1    1    1    1    1   ...</span>
+<span class="go">2    10190   3    2    2    3    1   ...</span>
+<span class="go">3    10210   3    2    3    3    2   ...</span>
+<span class="go">4    10230   3    3    3    2    2   ...</span>
+<span class="go">5    10250   3    2    3    3    2   ...</span>
+<span class="gp">...</span>
+
+<span class="go">[987 rows x 248 columns]</span>
+</pre></div>
+</div>
+<p>Show the list of the all the column names:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Show the column names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">Index([&#39;ID&#39;, &#39;Q1&#39;, &#39;Q2a&#39;, &#39;Q2b&#39;, &#39;Q3a&#39;, &#39;Q3b&#39;, &#39;Q3c&#39;, &#39;Q3d&#39;, &#39;Q3e&#39;, &#39;Q3f&#39;,</span>
+<span class="go">       ...</span>
+<span class="go">       &#39;Empstat&#39;, &#39;qual&#39;, &#39;marstat&#39;, &#39;access&#39;, &#39;Income&#39;, &#39;Broadsheet&#39;,</span>
+<span class="go">       &#39;MidMarket&#39;, &#39;Tabloid&#39;, &#39;NoPpr&#39;, &#39;weight&#39;],</span>
+<span class="go">      dtype=&#39;object&#39;, length=248)</span>
+</pre></div>
+</div>
+<p>Have a look at the data dictionary.  Find the name of the column containing
+the variable with label “Sources of balanced information about use of:
+Universities”.  Keep a note of that.</p>
+<p>Now find the name of the column with label “Sources of balanced information
+about use of: Animal protection organisations”.  Keep a note of that too.</p>
+<p>Finally, find the column for “Sources of balanced information about use of:
+Politicians / MPs”.  Note as well.</p>
+<p>Use indexing to select make a new data frame containing only these three
+columns from the original data frame.  It will look something like <code class="docutils literal notranslate"><span class="pre">questions</span>
+<span class="pre">=df[</span></code> followed by the names of the columns you just found.  Have a look at
+<a class="reference internal" href="brexit_analysis.html"><span class="doc">Where are the Brexiteers?</span></a> for inspiration.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Select only the two columns we found above.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Something like</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#- questions = df[ something here ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Q7_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Q7_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Q7_6&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Check that your new <code class="docutils literal notranslate"><span class="pre">questions</span></code> data frame has the column names you
+expected.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Show the column names for the new &quot;questions&quot; data frame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">Index([&#39;Q7_1&#39;, &#39;Q7_2&#39;, &#39;Q7_6&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>Rename the columns to <code class="docutils literal notranslate"><span class="pre">&quot;trust_uni&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;trust_protectors&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;trust_politicians&quot;</span></code>.   See <a class="reference internal" href="brexit_analysis.html"><span class="doc">Where are the Brexiteers?</span></a> for inspiration.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Rename the columns of the new data frame to:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#- &quot;trust_uni&quot;, &quot;trust_protectors&quot;, &quot;trust_politicians&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;trust_uni&#39;</span><span class="p">,</span> <span class="s1">&#39;trust_protectors&#39;</span><span class="p">,</span> <span class="s1">&#39;trust_politicians&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">Index([&#39;trust_uni&#39;, &#39;trust_protectors&#39;, &#39;trust_politicians&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If running in the IPython console, consider running <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> to enable
+interactive plots.  If running in the Jupyter Notebook, use <code class="docutils literal notranslate"><span class="pre">%matplotlib</span>
+<span class="pre">inline</span></code>.</p>
+</div>
+<p>Import the plotting library, using the same conventions as in
+<a class="reference internal" href="brexit_analysis.html"><span class="doc">Where are the Brexiteers?</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- Import the plotting library</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<p>Plot a histogram of the values for the question about trusting universities.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- A histogram of the values for the trust universities question</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_uni&#39;</span><span class="p">]);</span>
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//animal_attitudes-9.png">png</a>, <a class="reference external" href=".//animal_attitudes-9.hires.png">hires.png</a>, <a class="reference external" href=".//animal_attitudes-9.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/animal_attitudes-9.png" src="_images/animal_attitudes-9.png" />
+</div>
+<p>Check in the data dictionary above - what do 0 and 1 mean?</p>
+<p>Plot a histogram of the values for the question about trusting Animal
+Protection Organizations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- A histogram of the values for the trust APOs question</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_protectors&#39;</span><span class="p">]);</span>
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//animal_attitudes-10.png">png</a>, <a class="reference external" href=".//animal_attitudes-10.hires.png">hires.png</a>, <a class="reference external" href=".//animal_attitudes-10.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/animal_attitudes-10.png" src="_images/animal_attitudes-10.png" />
+</div>
+<p>Do you think there is a substantial difference between these histograms?   How
+would you check?</p>
+<p>Plot the histogram for the trust in politicians.  Is there a difference
+between this question and the other two?  How would you check?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#- A histogram of the values for the trust APOs question</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_politicians&#39;</span><span class="p">]);</span>
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//animal_attitudes-11.png">png</a>, <a class="reference external" href=".//animal_attitudes-11.hires.png">hires.png</a>, <a class="reference external" href=".//animal_attitudes-11.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/animal_attitudes-11.png" src="_images/animal_attitudes-11.png" />
+</div>
+<p>Save the reduced data frame in case we want to use it later:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">questions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;animal_questions.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-permutation-test">
+<h2>A permutation test<a class="headerlink" href="#a-permutation-test" title="Permalink to this headline">¶</a></h2>
+<p>Here we try and answer one of the questions above - is there a difference
+between the yes / no answers for the <code class="docutils literal notranslate"><span class="pre">trust_uni</span></code> answers and the
+<code class="docutils literal notranslate"><span class="pre">trust_proectors</span></code> answers.  Do the respondents trust universities more than
+Animal Protection Organizations (APOs)?</p>
+<p>To start, let’s make lists for the data we are going to study:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trust_uni</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_uni&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trust_protectors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_protectors&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>They came from the same data frame, so we are pretty sure they have the same
+lengths:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span>
+<span class="go">987</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">trust_protectors</span><span class="p">)</span>
+<span class="go">987</span>
+</pre></div>
+</div>
+<p>First - is there any differences in the answers?  We can see in the data
+dictionary that 0 means “No” or “Do not trust” and 1 means “Yes” or “Do
+trust”.  So we can see how many “Yes” votes there were with <code class="docutils literal notranslate"><span class="pre">sum</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span>
+<span class="go">346</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">trust_protectors</span><span class="p">)</span>
+<span class="go">329</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">observed_difference</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trust_protectors</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observed_difference</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+<p>Of course we could also use <code class="docutils literal notranslate"><span class="pre">mean</span></code>, where the result will be the average
+answer, towards 0 if more people don’t trust, towards 1 if more people do
+trust:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span>
+<span class="go">0.3505572441742654...</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">trust_protectors</span><span class="p">)</span>
+<span class="go">0.3333333333333333...</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">(</span><span class="n">trust_protectors</span><span class="p">)</span>
+<span class="go">0.01722391084093211...</span>
+</pre></div>
+</div>
+<p>So, there is a difference.  But did this difference come about through some
+random factor in the way people were answering the questions?  Or can we
+exclude that as unlikely?</p>
+<p>What is our null hypothesis.</p>
+<p>There is some randomness to the answers to both questions <code class="docutils literal notranslate"><span class="pre">trust_uni</span></code> and
+<code class="docutils literal notranslate"><span class="pre">trust_protectors</span></code>.  This randomness is a reasonable explanation for the
+observed differences in the sum or mean of the answers to these questions.</p>
+<p>If the null hypothesis is true, then we can consider the answers to the two
+questions to be, effectively, an answer to the same question, maybe something
+like “do you trust special interest groups?”.</p>
+<p>But - careful - does our null hypothesis make us believe that we can take the
+answer from one person and allocate it to another?  No - our null hypothesis
+allows different people to have different views on “do you trust special
+interest groups”, but not to have different views on universities versus
+Animal Protection Organizations?</p>
+<p>So, how can we let people have their different views on the general question,
+while pretending (for now) that they have the same view of universities and
+APOs?</p>
+<p>Our null hypothesis allows us to <em>swap</em> the answers for the two questions,
+within one person.   Here is what it looks like if we randomly swap the
+answers to the questions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">sum_with_swap</span><span class="p">(</span><span class="n">answers_1</span><span class="p">,</span> <span class="n">answers_2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Make new lists for the answers where some are swapped</span>
+<span class="gp">... </span>    <span class="n">new_answers_1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">... </span>    <span class="n">new_answers_2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">answers_1</span><span class="p">)):</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="c1"># Don&#39;t swap</span>
+<span class="gp">... </span>            <span class="n">answer_1</span> <span class="o">=</span> <span class="n">answers_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>            <span class="n">answer_2</span> <span class="o">=</span> <span class="n">answers_2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>        <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="c1"># Swap</span>
+<span class="gp">... </span>            <span class="n">answer_2</span> <span class="o">=</span> <span class="n">answers_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>            <span class="n">answer_1</span> <span class="o">=</span> <span class="n">answers_2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>        <span class="n">new_answers_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_1</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">new_answers_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">new_answers_1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">new_answers_2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try a single trial with swaps:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sum_with_swap</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">,</span> <span class="n">trust_protectors</span><span class="p">)</span>
+<span class="go">-7</span>
+</pre></div>
+</div>
+<p>Now we can do one trial, we build up our sampling distribution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampled_sums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">one_trial</span> <span class="o">=</span> <span class="n">sum_with_swap</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">,</span> <span class="n">trust_protectors</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">sampled_sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">one_trial</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We plot the distribution:</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If running in the IPython console, consider running <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> to enable
+interactive plots.  If running in the Jupyter Notebook, use <code class="docutils literal notranslate"><span class="pre">%matplotlib</span>
+<span class="pre">inline</span></code>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sampled_sums</span><span class="p">)</span>
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//animal_attitudes-29.png">png</a>, <a class="reference external" href=".//animal_attitudes-29.hires.png">hires.png</a>, <a class="reference external" href=".//animal_attitudes-29.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/animal_attitudes-29.png" src="_images/animal_attitudes-29.png" />
+</div>
+<p>Remember the observed difference:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">observed_difference</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+<p>What do you think - is the difference in the answers to <code class="docutils literal notranslate"><span class="pre">trust_uni</span></code> and
+<code class="docutils literal notranslate"><span class="pre">trust_protectors</span></code> compatible with randomness in the answers to the
+questions, or is there some real difference here?</p>
+<p>Let’s do the same test for trust in politicians:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trust_politicians</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">questions</span><span class="p">[</span><span class="s1">&#39;trust_politicians&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">politicians_observed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trust_politicians</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">politicians_observed</span>
+<span class="go">284</span>
+</pre></div>
+</div>
+<p>Ouch.</p>
+<p>Now for our pair swap test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sampled_sums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">one_trial</span> <span class="o">=</span> <span class="n">sum_with_swap</span><span class="p">(</span><span class="n">trust_uni</span><span class="p">,</span> <span class="n">trust_politicians</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">sampled_sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">one_trial</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sampled_sums</span><span class="p">)</span>
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//animal_attitudes-33.png">png</a>, <a class="reference external" href=".//animal_attitudes-33.hires.png">hires.png</a>, <a class="reference external" href=".//animal_attitudes-33.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/animal_attitudes-33.png" src="_images/animal_attitudes-33.png" />
+</div>
+<p>What do you think about the difference in trust between universities and
+politicians?</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Attitudes to animal research</a><ul>
+<li><a class="reference internal" href="#introduction-to-the-data">Introduction to the data</a></li>
+<li><a class="reference internal" href="#a-permutation-test">A permutation test</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="school_and_fertility.html" title="previous chapter">Schooling and fertility</a></li>
+      <li>Next: <a href="number_of_girls.html" title="next chapter">Three girls in a family of four</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/animal_attitudes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/animal_attitudes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

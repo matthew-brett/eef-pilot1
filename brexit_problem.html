@@ -1,0 +1,164 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Where are the Brexiteers? &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Where are the Brexiteers?" href="brexit_analysis.html" />
+    <link rel="prev" title="Day 0" href="day_0.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="where-are-the-brexiteers">
+<h1>Where are the Brexiteers?<a class="headerlink" href="#where-are-the-brexiteers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="brexit_problem.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<p>Every year, the <a class="reference external" href="https://www.hansardsociety.org.uk/research/audit-of-political-engagement">Hansard Society</a>
+sponsors a survey on political engagement in the UK.</p>
+<p>They put topical questions in each survey.  For the 2016 / 7 survey, they
+asked about how people voted in the Brexit referendum.</p>
+<p>Luckily, they make the data freely available online for us to analyze.</p>
+<p>You can get the data for yourself from the UK Data Service:
+<a class="reference external" href="https://discover.ukdataservice.ac.uk/catalogue/?sn=8183">https://discover.ukdataservice.ac.uk/catalogue/?sn=8183</a>. There are data files
+in various formats, including:</p>
+<ul class="simple">
+<li>SPSS format (for the SPSS statistical package);</li>
+<li>Stata format (for the Stata statistical package);</li>
+<li>tab-delimited (a general data format, that can be used with Excel and other
+packages).</li>
+</ul>
+<p>The data is in a standard form, with one row per respondent, and one column
+per question.</p>
+<p>To save you a tiny bit of work, I’ve made an unchanged copy of the
+tab-delimited version of the data file for you to download directly. I’ve also
+made a copy of the document describing the questions they ask and the way that
+they have recorded the answers in the data file.  This is often called the
+“data dictionary”.  It was originally in Rich Text Format, but I have
+converted to PDF for convenience.  It is otherwise identical to the file you
+will find at the UK Data Service.</p>
+<p>You can download these copies of the files from the following links:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/audit_of_political_engagement_14_2017.tab" download=""><code class="xref download docutils literal notranslate"><span class="pre">tab-delimited</span> <span class="pre">data</span> <span class="pre">file</span></code></a>;</li>
+<li><a class="reference download internal" href="_downloads/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf" download=""><code class="xref download docutils literal notranslate"><span class="pre">data</span> <span class="pre">dictionary</span> <span class="pre">PDF</span> <span class="pre">file</span></code></a>.</li>
+</ul>
+<p>In the moment, we are going to try and analyze these data.  We will focus on
+two questions labeled <code class="docutils literal notranslate"><span class="pre">cut15</span></code> and <code class="docutils literal notranslate"><span class="pre">numage</span></code>.  <code class="docutils literal notranslate"><span class="pre">cut15</span></code> is the question
+about Brexit. The data dictionary has the <em>variable label</em> “CUT15 - How did
+you vote on the question ‘Should the United Kingdom remain a member of the
+European Union or leave the European Union’?”.  The recorded values run from 1
+through 6 and have the following labels:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Value label information for cut15
+Value = 1.0    Label = Remain a member of the European Union
+Value = 2.0    Label = Leave the European Union
+Value = 3.0    Label = Did not vote
+Value = 4.0    Label = Too young
+Value = 5.0    Label = Can&#39;t remember
+Value = 6.0    Label = Refused
+</pre></div>
+</div>
+<p>We also want the variable <code class="docutils literal notranslate"><span class="pre">numage</span></code>; this is the age of the respondent in
+years.</p>
+<p>Your task is the following:</p>
+<ul class="simple">
+<li>Load the data.</li>
+<li>Check the values for <code class="docutils literal notranslate"><span class="pre">cut15</span></code> and <code class="docutils literal notranslate"><span class="pre">numage</span></code>. Are there any bad values?  If
+there are, remove the respondents (rows) that have invalid values in either
+variable.</li>
+<li>In this clean dataset, find the number of people who admitted to voting
+Remain.  Find the number of people who admitted to voting Leave.  Calculate
+the ratio of Leave voters to (voters who voted either Leave or Remain).</li>
+<li>Write down every step of what you did, so that someone else can reproduce
+it.</li>
+</ul>
+<p>Remember, the <a class="reference external" href="https://www.electoralcommission.org.uk/find-information-by-subject/elections-and-referendums/past-elections-and-referendums/eu-referendum/electorate-and-count-information">final referendum vote percentages</a>
+were:</p>
+<ul class="simple">
+<li>Remain: 48.1%</li>
+<li>Leave: 51.9%</li>
+</ul>
+<p>Did the proportion you find, match the proportion in the referendum?  How far
+off was it?  Is it too far off?  Think about what “too far” could mean.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="day_0.html" title="previous chapter">Day 0</a></li>
+      <li>Next: <a href="brexit_analysis.html" title="next chapter">Where are the Brexiteers?</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/brexit_problem.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/brexit_problem.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

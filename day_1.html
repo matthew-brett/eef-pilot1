@@ -1,0 +1,168 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Day 1 &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Day 2" href="day_2.html" />
+    <link rel="prev" title="Three girls in a family of four" href="number_of_girls.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="day-1">
+<h1>Day 1<a class="headerlink" href="#day-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="morning-thinking-about-sampling">
+<h2>Morning - thinking about sampling<a class="headerlink" href="#morning-thinking-about-sampling" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>10.00 - 10.15 - Are there too few Brexiteers in the survey?  How would we
+decide?</li>
+<li>10.15 - 10.45 - another problem of proportions.  If a family has 4 children,
+what is the probability that the family has 3 girls?  A simulation.</li>
+<li>10 minute break</li>
+<li>10.55 - 11.15 - what is the algorithm?</li>
+<li>11.15 - 12.00 - the machinery we will need: <a class="reference internal" href="print_if_for.html"><span class="doc">Print, If and For</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="afternoon-probability-and-simulation">
+<h2>Afternoon - probability and simulation<a class="headerlink" href="#afternoon-probability-and-simulation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>back for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops in <a class="reference internal" href="print_if_for.html"><span class="doc">Print, If and For</span></a>.</li>
+<li>lists in <a class="reference internal" href="lists.html"><span class="doc">Lists</span></a>.</li>
+<li>solving with simulation; <a class="reference internal" href="three_girls.html"><span class="doc">Three girls</span></a>;</li>
+</ul>
+<p>Notebooks from the afternoon:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/riffing_on_if_for_and.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">riffing_on_if_for_and.ipynb</span></code></a>;</li>
+<li><a class="reference download internal" href="_downloads/riffing_on_lists.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">riffing_on_lists.ipynb</span></code></a>.</li>
+</ul>
+<p>An explanation of <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>: <a class="reference internal" href="and_or.html"><span class="doc">and, or in expressions</span></a>.</p>
+</div>
+<div class="section" id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Download the notebook from the link at top of <a class="reference internal" href="three_girls.html"><span class="doc">Three girls</span></a> - it’s a
+slightly modified solution to the three girls problem we were working on
+today.   Make a copy, that you are going to modify.</p>
+</li>
+<li><p class="first">Modify the notebook to give the probability of 2 girls, instead of 3 girls.
+What is that?</p>
+</li>
+<li><p class="first">Make another copy of the original Notebook for the next problem.  The actual
+probability of having a male child is not 0.5 but 0.513. <a class="footnote-reference" href="#male-births" id="id1">[1]</a>.
+To do a better simulation, we need to modify the Notebook to give a 0.513
+probability of <code class="docutils literal notranslate"><span class="pre">&quot;B&quot;</span></code> and a 0.487 probability of <code class="docutils literal notranslate"><span class="pre">&quot;G&quot;</span></code>. You can’t easily
+use <code class="docutils literal notranslate"><span class="pre">random.choice</span></code> for this, but you could an expression like this to
+decide if it is a <em>girl</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.487</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">random.uniform(0,</span> <span class="pre">1)</span></code> returns a random number between 0 and 1 - so the
+number it returns will be <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0.487</span></code> about 48.7% of the time.</p>
+<p>Modify your new copy of the Notebook to use something like this to give the
+probability of a girl.  You should find that your estimate of the proportion
+of 3-girl families drops slightly, because girls are slightly less common
+than boys.</p>
+</li>
+</ul>
+<table class="docutils footnote" frame="void" id="male-births" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014">Official UK government statistics</a>
+give the birth ratio as 105.3. This the number of boys born for every 100
+girls.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Day 1</a><ul>
+<li><a class="reference internal" href="#morning-thinking-about-sampling">Morning - thinking about sampling</a></li>
+<li><a class="reference internal" href="#afternoon-probability-and-simulation">Afternoon - probability and simulation</a></li>
+<li><a class="reference internal" href="#homework">Homework</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="number_of_girls.html" title="previous chapter">Three girls in a family of four</a></li>
+      <li>Next: <a href="day_2.html" title="next chapter">Day 2</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/day_1.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/day_1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

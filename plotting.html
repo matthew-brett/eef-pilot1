@@ -1,0 +1,195 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Plotting &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What is this?" href="what_is_this.html" />
+    <link rel="prev" title="Slicing lists" href="slice_list.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="plotting.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<div class="section" id="take-home-message-for-the-lazy">
+<h2>Take home message for the lazy<a class="headerlink" href="#take-home-message-for-the-lazy" title="Permalink to this headline">¶</a></h2>
+<p>To use plotting in a Notebook, add the following cell:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+<p>Then use commands like <code class="docutils literal notranslate"><span class="pre">plt.hist(data)</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.scatter(x_data,</span> <span class="pre">y_data)</span></code>.</p>
+</div>
+<div class="section" id="in-more-detail">
+<h2>In more detail<a class="headerlink" href="#in-more-detail" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matplotlib.org">Matplotlib</a> is a popular plotting library for Python.</p>
+<p>In particular, there is a sub-module of Matplotlib, that has many useful
+plotting functions.</p>
+<p>You can import this in the usual way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
+<span class="go">&lt;class &#39;module&#39;&gt;</span>
+</pre></div>
+</div>
+<p>By default, Matplotlib likes to make a new window for each plot.  That’s not
+what we want in the Notebook, because we want the plots to appear inside the
+Notebook.  To make that happen we use a special command in the Notebook, like
+this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+<p>Once we’ve done this, the plot come up inside the Notebook, and can be stored
+with the notebook.</p>
+<p>Here’s an example histogram from the <a class="reference internal" href="brexit_analysis.html"><span class="doc">Where are the Brexiteers?</span></a> data.  I’m using
+Pandas to load the data, but that’s only to get the data; it is not important
+for the plotting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the data - don&#39;t worry about the details of this cell</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remain_leave</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;remain_leave.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">leavers_ages</span> <span class="o">=</span> <span class="n">remain_leave</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">remain_leave</span><span class="p">[</span><span class="s1">&#39;brexit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Do a default histogram of the leavers&#39; ages</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">leavers_ages</span><span class="p">)</span>
+<span class="go">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//plotting-3.png">png</a>, <a class="reference external" href=".//plotting-3.hires.png">hires.png</a>, <a class="reference external" href=".//plotting-3.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/plotting-3.png" src="_images/plotting-3.png" />
+</div>
+<p>It is boring to have to type <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code> when you want a
+histogram, so we often make a shortcut to the <cite>plt</cite> module, like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make a shortcut to the pyplot submodule, and use it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">leavers_ages</span><span class="p">)</span>
+<span class="go">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//plotting-4.png">png</a>, <a class="reference external" href=".//plotting-4.hires.png">hires.png</a>, <a class="reference external" href=".//plotting-4.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/plotting-4.png" src="_images/plotting-4.png" />
+</div>
+<p>In fact, there’s a shortcut to making the shortcut, which is to rename the
+submodule when we import it.  That looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import the pyplot submodule with it&#39;s own shortcut</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">leavers_ages</span><span class="p">)</span>
+<span class="go">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//plotting-5.png">png</a>, <a class="reference external" href=".//plotting-5.hires.png">hires.png</a>, <a class="reference external" href=".//plotting-5.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/plotting-5.png" src="_images/plotting-5.png" />
+</div>
+<p>You’ll see this command <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></code> in a lot of code
+online, it’s a very popular idiom.</p>
+<p>Another useful plot is a scatterplot. Here I go back to the Brexit
+questionnaire, and plot the persons age (on the x axis) against a weighting
+score used in the survey:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all the data again</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;audit_of_political_engagement_14_2017.tab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">audit_data</span><span class="p">[</span><span class="s1">&#39;numage&#39;</span><span class="p">],</span> <span class="n">audit_data</span><span class="p">[</span><span class="s1">&#39;wts&#39;</span><span class="p">])</span>
+<span class="go">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//plotting-6.png">png</a>, <a class="reference external" href=".//plotting-6.hires.png">hires.png</a>, <a class="reference external" href=".//plotting-6.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/plotting-6.png" src="_images/plotting-6.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Plotting</a><ul>
+<li><a class="reference internal" href="#take-home-message-for-the-lazy">Take home message for the lazy</a></li>
+<li><a class="reference internal" href="#in-more-detail">In more detail</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="slice_list.html" title="previous chapter">Slicing lists</a></li>
+      <li>Next: <a href="what_is_this.html" title="next chapter">What is this?</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/plotting.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/plotting.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

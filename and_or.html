@@ -1,0 +1,163 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>and, or in expressions &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="While loops" href="while_loops.html" />
+    <link rel="prev" title="Three girls" href="three_girls_no_lists.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="and-or-in-expressions">
+<h1>and, or in expressions<a class="headerlink" href="#and-or-in-expressions" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="and_or.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<p>Imagine I had these variables:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
+</pre></div>
+</div>
+<p>We are already familiar with expressions like these:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>We can combine expressions like these with <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
+<p>Consider <code class="docutils literal notranslate"><span class="pre">and</span></code>. Here is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">and</span></code> takes a expression on the left and evaluates it.  If that statement is
+True, it then evaluates the statement on the right.  If both are True, the
+<code class="docutils literal notranslate"><span class="pre">and</span></code> expression results in True.  If either are False, it results in False.</p>
+<p>This is the same logic as we use in speech.  If I say “jump if the table is
+brown and the floor is gray”, when do you jump?  You only jump both of these
+are true: “the table is brown” and “the floor is gray”.  You don’t jump if the
+table is red and the floor is gray, or if the table is brown and the floor is
+white.  Both clauses have to be true.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Both clauses are True so the &quot;and&quot; is True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Only the left clause is True so the &quot;and&quot; is False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Only the right clause is True so the &quot;and&quot; is False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Now consider <code class="docutils literal notranslate"><span class="pre">or</span></code>.  Here is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code> takes an expression on the left and evalualates it.  If it is True, it
+stops and returns True.  Otherwise it continues and evaluates the experession
+on the right.  If this is True, it returns True, otherwise it returns False.</p>
+<p>This is also the same logic as we use in speech.  If I say “jump if the table
+is red or the floor is gray”, you jump <em>either</em> if the table is red, <em>or</em> if
+the floor is gray.  Only one of the two clauses has to be true.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Just the right clause is True, but that makes the &quot;or&quot; True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Just the left clause is True, but that makes the &quot;or&quot; True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Both of these are True, so the &quot;or&quot; is True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Neither of these are True, so the &quot;or&quot; is False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="three_girls_no_lists.html" title="previous chapter">Three girls</a></li>
+      <li>Next: <a href="while_loops.html" title="next chapter">While loops</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/and_or.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/and_or.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

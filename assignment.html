@@ -1,0 +1,190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Assignment &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Three girls" href="three_girls.html" />
+    <link rel="prev" title="Quicker, smaller setup" href="slim_setup.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="assignment">
+<h1>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="assignment.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<p>Here are two assignment statements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
+</pre></div>
+</div>
+<p>Assignment statements are very common in coding, and we’ll spend some time
+trying to understand them.</p>
+<p>An assignment statement has two parts:</p>
+<ul class="simple">
+<li>The Left Hand Side (LHS) - to the left of the equals sign.  For the two
+statements above, the left hand sides are <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code>, respectively.</li>
+<li>The Right Hand Side (RHS) - to the right of the equals sign.  For the two
+statements above, the right hand sides are <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Matthew&quot;</span></code>
+respectively.</li>
+</ul>
+<p>In an assignment statement, the LHS is the <em>name of a variable</em> - in this case
+<code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>The RHS is an <em>expression</em> - something that gives a value.  In this case the
+code <code class="docutils literal notranslate"><span class="pre">10</span></code> is an expression returning the value 10, and the code
+<code class="docutils literal notranslate"><span class="pre">&quot;Matthew&quot;</span></code> returns the text <em>string</em> “Matthew”.</p>
+<p>When you learn programming, and even when you get a lot of experience, it is
+useful to read to yourself what the code is doing.</p>
+<p>In the cells above, we are <em>setting</em> a <em>variable</em> (named on the LHS) to have
+a <em>value</em> (returned from the expression on the RHS).</p>
+<p>It can be helpful to read the statement above in a verbose way to be clear
+what they are doing. For example, we can read <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10</span></code> as “Make the name
+<code class="docutils literal notranslate"><span class="pre">a</span></code> refer to the number <code class="docutils literal notranslate"><span class="pre">10</span></code>.  After this statement, we can say that
+<em>variable</em> (name) <code class="docutils literal notranslate"><span class="pre">a</span></code> has <em>value</em> (refers to) the number <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<p>Read <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&quot;Matthew&quot;</span></code> as “Make the name <code class="docutils literal notranslate"><span class="pre">p</span></code> refer to the string “Matthew”.
+Variable <code class="docutils literal notranslate"><span class="pre">p</span></code> then has value “Matthew”.</p>
+<p>So far we have only used expressions that are simple values.  We can also use
+more complicated expressions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to the result of adding 2 and 3”.</p>
+<p>The great advantage of variables, is that they can be used in expressions.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">c</span></code> refer to the value in <code class="docutils literal notranslate"><span class="pre">a</span></code>”.</p>
+<p>Or:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">d</span></code> refer to the result of adding the value in <code class="docutils literal notranslate"><span class="pre">a</span></code> to
+the value in <code class="docutils literal notranslate"><span class="pre">b</span></code>”.</p>
+<p>Remember, an assignment consists of LHS <code class="docutils literal notranslate"><span class="pre">=</span></code> RHS, where LHS is the name of
+a variable, and RHS is an expression returning a value.</p>
+<p>If we just want to see the result of an expression, we can do this in Jupyter,
+by putting the RHS expression on its own at the end of the cell.  For example,
+here’s the result of the expression <code class="docutils literal notranslate"><span class="pre">15</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">15</span>
+<span class="go">15</span>
+</pre></div>
+</div>
+<p>The <em>expression</em> <code class="docutils literal notranslate"><span class="pre">15</span></code> returns the number 15.  Now we have set <code class="docutils literal notranslate"><span class="pre">a</span></code> to point
+to the value 10, here is what we get with the <em>expression</em> <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>The expression <code class="docutils literal notranslate"><span class="pre">a</span></code> returns the value referred to by <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>We can do assignments in the same cell, and follow them by a RHS expression on
+its own, and we will still see the value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">48</span>
+</pre></div>
+</div>
+<p>To repeat, an assignment is a variable name on the LHS, followed by <code class="docutils literal notranslate"><span class="pre">=</span></code>,
+followed by an expression on the RHS.  Without typing this in, what do you
+think you will see for these.  Explain why.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>  
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>  
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;g&quot;</span> <span class="o">=</span> <span class="s2">&quot;Interesting&quot;</span>  
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">=</span> <span class="mi">3</span>   
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span>  
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="slim_setup.html" title="previous chapter">Quicker, smaller setup</a></li>
+      <li>Next: <a href="three_girls.html" title="next chapter">Three girls</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/assignment.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/assignment.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
