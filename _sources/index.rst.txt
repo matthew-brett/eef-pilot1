@@ -7,7 +7,7 @@
 A pilot course on teaching data analysis
 ########################################
 
-These are the web pages for the July 11-13th pilot course on teaching
+These are the web pages for the July 18-20th pilot course on teaching
 algorithms and data analysis at the University of Birmingham.
 
 .. toctree::
