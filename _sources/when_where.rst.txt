@@ -11,7 +11,7 @@ later on the last day.
 
 For all three days, we will be in `Gisbert Kapp N329
 <https://universityofbirmingham.service-now.com/eqpublic/rooms.do?room=91fd75974d8d6c008163baecd9deaa10>`_
-(G8 on the the `UoB campus map`_.
+(G8 on the the `UoB campus map`_).
 
 * Wednesday July 18th, 9.30am - 12, 2 - 4pm;
 * Thursday July 19th, 10am - 12, 2 - 4pm;

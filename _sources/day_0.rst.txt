@@ -27,7 +27,22 @@ The problem
 * :doc:`the Brexit problem <brexit_problem>`.
 * Another problem.  Simulation.
 * :doc:`assignment`.
-* :doc:`python_and_jupyter`.
+
+.. curriculum
+
+    assignment is giving a name to a value
+    values and expressions
+    reassigning a variable
+    updating a variable
+    adding strings
+    lists
+
+.. steps
+
+    family = random.choice(['G', 'B'])
+    family = family + random.choice(['G', 'B'])
+    family = family + random.choice(['G', 'B'])
+    family = family + random.choice(['G', 'B'])
 
 .. [#get-source] Source files for building the slides, and source for all the
    pages in this website are always available in the `course Github
