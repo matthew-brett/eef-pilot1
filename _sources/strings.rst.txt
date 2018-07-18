@@ -161,8 +161,8 @@ and a pen or pencil, and put it next to you.
 Make a variable ``driver_name`` that has the value of the driver's name, (as a
 string).
 
-Make a variable ``navigator_name`` that has the value of the driver's name,
-(as a string).
+Make a variable ``navigator_name`` that has the value of the navigators's
+name, (as a string).
 
 Make a variable ``team_name`` that has the value of the concatenation of the
 driver's name and the navigators name.
