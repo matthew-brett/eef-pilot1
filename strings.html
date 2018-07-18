@@ -1,0 +1,185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Strings, functions, and types of things &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="strings-functions-and-types-of-things">
+<h1>Strings, functions, and types of things<a class="headerlink" href="#strings-functions-and-types-of-things" title="Permalink to this headline">¶</a></h1>
+<p>So far (in <a class="reference internal" href="assignment.html"><span class="doc">Assignment</span></a>) our expressions have all used numbers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>We read this as “<code class="docutils literal notranslate"><span class="pre">a</span></code> gets the value 10”.</p>
+<div class="section" id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<p>There are other types of values.  One very common type of value is a string.
+A string contains text, instead of numbers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span>
+<span class="go">&#39;Matthew&#39;</span>
+</pre></div>
+</div>
+<p>Notice the quotes around <cite>“Matthew”</cite>.  The quotes tell Python that I mean to
+define a string here.  What would happen if I missed off the quotes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="n">Matthew</span>  
+</pre></div>
+</div>
+<p>Remember your debugging Fu (that’s like Kung Fu, but for debugging).   Look at
+the message.  See if you can understand what it means.  Python does not think
+that <code class="docutils literal notranslate"><span class="pre">Matthew</span></code> is a string, but what does Python think that it is.</p>
+<p>Let’s define another string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">your_name</span> <span class="o">=</span> <span class="s2">&quot;Yogi&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">your_name</span>
+<span class="go">&#39;Yogi&#39;</span>
+</pre></div>
+</div>
+<p>What do you think would happen if I did this?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">both_names</span> <span class="o">=</span> <span class="n">my_name</span> <span class="o">+</span> <span class="n">your_name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Here we use a <em>function</em> for the first time.  The function is called <code class="docutils literal notranslate"><span class="pre">len</span></code>.
+What do you think it does?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">how_long</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">how_long</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>A function is something that we can <em>call</em>.  We <em>call</em> a function, by giving
+the function name - here <code class="docutils literal notranslate"><span class="pre">len</span></code> - followed by open parenthesis - <code class="docutils literal notranslate"><span class="pre">(</span></code> -
+followed by the <em>function arguments</em> - here <code class="docutils literal notranslate"><span class="pre">my_name</span></code> - followed by close
+parenthesis <code class="docutils literal notranslate"><span class="pre">)</span></code>.  The function may return calculated and return a value. In
+this case <code class="docutils literal notranslate"><span class="pre">len(my_name)</span></code> returns the number of characters in the string.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Python is super fussy about its brackets.  <code class="docutils literal notranslate"><span class="pre">(</span></code> and <code class="docutils literal notranslate"><span class="pre">)</span></code> (parentheses)
+are not at all the same thing as <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> (<em>square brackets</em>) or
+<code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code> (<em>curly brackets</em>).  Try using square brackets and curly
+brackets in the expression above.  Does it work?</p>
+</div>
+<p>Here’s another function you will see a lot - <code class="docutils literal notranslate"><span class="pre">print</span></code>.  It has the same
+pattern - the function name <code class="docutils literal notranslate"><span class="pre">print</span></code> followed by <code class="docutils literal notranslate"><span class="pre">(</span></code> followed by the
+arguments (the things to print), followed by <code class="docutils literal notranslate"><span class="pre">)</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">my_name</span><span class="p">)</span>
+<span class="go">Matthew</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Get into pairs.  Allocate the driver and the navigator.  Get a piece of paper
+and a pen or pencil, and put it next to you.</p>
+<p>Make a variable <code class="docutils literal notranslate"><span class="pre">driver_name</span></code> that has the value of the driver’s name, (as a
+string).</p>
+<p>Make a variable <code class="docutils literal notranslate"><span class="pre">navigator_name</span></code> that has the value of the driver’s name, (as a
+string).</p>
+<p>Make a variable <code class="docutils literal notranslate"><span class="pre">team_name</span></code> that has the value of the concatenation of the
+driver’s name and the navigators name.</p>
+<p>Make a variable <code class="docutils literal notranslate"><span class="pre">team_len</span></code> that is the length of <code class="docutils literal notranslate"><span class="pre">team_name</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">print</span></code> to print <code class="docutils literal notranslate"><span class="pre">team_len</span></code> and <code class="docutils literal notranslate"><span class="pre">team_name</span></code>.</p>
+<p>See if you can work out how to make a variable <code class="docutils literal notranslate"><span class="pre">nicer_team_name</span></code> that is the
+driver’s name followed by a space, followed by the navigator’s name.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Strings, functions, and types of things</a><ul>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/strings.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/strings.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

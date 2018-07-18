@@ -57,3 +57,5 @@ algorithms and data analysis at the University of Birmingham.
     slice_list
     plotting
     what_is_this
+    strings
+    notes

@@ -25,24 +25,44 @@ The problem
 * introduction to the course - :download:`talk slides
   <intro_talk_slides.pdf>` [#get-source]_.
 * :doc:`the Brexit problem <brexit_problem>`.
-* Another problem.  Simulation.
+* Three girls.  A simulation.
+* The algorithm.
+* On debugging.
 * :doc:`assignment`.
+* :doc:`strings`.
 
 .. curriculum
 
     assignment is giving a name to a value
-    values and expressions
+    variable names
+    values and expressions "n gets the value 7"
+    assignment exercises
     reassigning a variable
     updating a variable
-    adding strings
+    strings
     lists
+
+.. quotes
+
+    A statement is an instruction that the Python interpreter can execute. We
+    have only seen the assignment statement so far. Some other kinds of
+    statements that we’ll see shortly are while statements, for statements, if
+    statements, and import statements. (There are other kinds too!)
+
+    An expression is a combination of values, variables, operators, and calls to
+    functions. Expressions need to be evaluated. If you ask Python to print an
+    expression, the interpreter evaluates the expression and displays the result.
+
+    The evaluation of an expression produces a value.
 
 .. steps
 
-    family = random.choice(['G', 'B'])
-    family = family + random.choice(['G', 'B'])
-    family = family + random.choice(['G', 'B'])
-    family = family + random.choice(['G', 'B'])
+    family = []
+    family.append(random.choice(['G', 'B']))
+    family.append(random.choice(['G', 'B']))
+    family.append(random.choice(['G', 'B']))
+    family.append(random.choice(['G', 'B']))
+    family
 
 .. [#get-source] Source files for building the slides, and source for all the
    pages in this website are always available in the `course Github

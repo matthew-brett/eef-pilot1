@@ -40,96 +40,140 @@
 <ul class="simple">
 <li><a class="reference download internal" href="assignment.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
 </ul>
-<p>Here are two assignment statements:</p>
+<p>A statement is an instruction that the Python interpreter can execute.</p>
+<p>We are going to start with an <em>assignment</em> statement.</p>
+<div class="section" id="assignment-statements">
+<h2>Assignment statements<a class="headerlink" href="#assignment-statements" title="Permalink to this headline">¶</a></h2>
+<p>Here is an assignment statement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
-</pre></div>
-</div>
-<p>Assignment statements are very common in coding, and we’ll spend some time
-trying to understand them.</p>
+<p>Prese shift-Return in the Notebook to execute this statement.</p>
 <p>An assignment statement has two parts:</p>
 <ul class="simple">
-<li>The Left Hand Side (LHS) - to the left of the equals sign.  For the two
-statements above, the left hand sides are <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code>, respectively.</li>
-<li>The Right Hand Side (RHS) - to the right of the equals sign.  For the two
-statements above, the right hand sides are <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Matthew&quot;</span></code>
-respectively.</li>
+<li>The Left Hand Side or LHS - to the left of the equals sign - here <code class="docutils literal notranslate"><span class="pre">a</span></code>.</li>
+<li>The Right Hand Side or RHS - the right of the equals sign - here <code class="docutils literal notranslate"><span class="pre">10</span></code>.</li>
 </ul>
-<p>In an assignment statement, the LHS is the <em>name of a variable</em> - in this case
-<code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
-<p>The RHS is an <em>expression</em> - something that gives a value.  In this case the
-code <code class="docutils literal notranslate"><span class="pre">10</span></code> is an expression returning the value 10, and the code
-<code class="docutils literal notranslate"><span class="pre">&quot;Matthew&quot;</span></code> returns the text <em>string</em> “Matthew”.</p>
+<p>The LHS - <code class="docutils literal notranslate"><span class="pre">a</span></code> is a <em>variable name</em>.</p>
+<p>The RHS - <code class="docutils literal notranslate"><span class="pre">10</span></code> is an <em>expression</em>.  When we <em>evaluate</em> the expression, we
+return a <em>value</em>.</p>
 <p>When you learn programming, and even when you get a lot of experience, it is
 useful to read to yourself what the code is doing.</p>
-<p>In the cells above, we are <em>setting</em> a <em>variable</em> (named on the LHS) to have
-a <em>value</em> (returned from the expression on the RHS).</p>
-<p>It can be helpful to read the statement above in a verbose way to be clear
-what they are doing. For example, we can read <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10</span></code> as “Make the name
-<code class="docutils literal notranslate"><span class="pre">a</span></code> refer to the number <code class="docutils literal notranslate"><span class="pre">10</span></code>.  After this statement, we can say that
-<em>variable</em> (name) <code class="docutils literal notranslate"><span class="pre">a</span></code> has <em>value</em> (refers to) the number <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
-<p>Read <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&quot;Matthew&quot;</span></code> as “Make the name <code class="docutils literal notranslate"><span class="pre">p</span></code> refer to the string “Matthew”.
-Variable <code class="docutils literal notranslate"><span class="pre">p</span></code> then has value “Matthew”.</p>
-<p>So far we have only used expressions that are simple values.  We can also use
-more complicated expressions:</p>
+<p>Read the statement above as <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">gets</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">10</span></code>.</p>
+<p>To repeat: an assignment statement is</p>
+<blockquote>
+<div><p>A variable name, followed by <code class="docutils literal notranslate"><span class="pre">=</span></code> followed by an expression.</p>
+<p>It should be read as “the &lt;variable name&gt; gets the value &lt;value from
+evaluating the expression&gt;”.</p>
+</div></blockquote>
+<p>For <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10</span></code> the expression <code class="docutils literal notranslate"><span class="pre">10</span></code> is very simple, but we can make the
+expression more complicated, like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to the result of adding 2 and 3”.</p>
-<p>The great advantage of variables, is that they can be used in expressions.
+<p>Read this as “<code class="docutils literal notranslate"><span class="pre">b</span></code> gets the value from evaluating <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">and</span> <span class="pre">3</span></code>”.</p>
+<p>While we are here, you can also use <code class="docutils literal notranslate"><span class="pre">*</span></code> for <em>multiply</em> and <code class="docutils literal notranslate"><span class="pre">/</span></code> for divide.
 For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">c</span></code> refer to the value in <code class="docutils literal notranslate"><span class="pre">a</span></code>”.</p>
-<p>Or:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">/</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Read this as “Make <code class="docutils literal notranslate"><span class="pre">d</span></code> refer to the result of adding the value in <code class="docutils literal notranslate"><span class="pre">a</span></code> to
-the value in <code class="docutils literal notranslate"><span class="pre">b</span></code>”.</p>
-<p>Remember, an assignment consists of LHS <code class="docutils literal notranslate"><span class="pre">=</span></code> RHS, where LHS is the name of
-a variable, and RHS is an expression returning a value.</p>
-<p>If we just want to see the result of an expression, we can do this in Jupyter,
-by putting the RHS expression on its own at the end of the cell.  For example,
-here’s the result of the expression <code class="docutils literal notranslate"><span class="pre">15</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">15</span>
-<span class="go">15</span>
+</div>
+<div class="section" id="variable-names">
+<h2>Variable names<a class="headerlink" href="#variable-names" title="Permalink to this headline">¶</a></h2>
+<p>Variable names can contain any letters or numbers, or the <code class="docutils literal notranslate"><span class="pre">_</span></code> character, but
+they can’t begin with a number.  Are these valid variable names?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>The <em>expression</em> <code class="docutils literal notranslate"><span class="pre">15</span></code> returns the number 15.  Now we have set <code class="docutils literal notranslate"><span class="pre">a</span></code> to point
-to the value 10, here is what we get with the <em>expression</em> <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">10</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_variable</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>The expression <code class="docutils literal notranslate"><span class="pre">a</span></code> returns the value referred to by <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
-<p>We can do assignments in the same cell, and follow them by a RHS expression on
-its own, and we will still see the value:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
-<span class="go">48</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_Dr_Strange</span> <span class="o">=</span> <span class="mi">42</span> <span class="o">/</span> <span class="mi">7</span>
 </pre></div>
 </div>
-<p>To repeat, an assignment is a variable name on the LHS, followed by <code class="docutils literal notranslate"><span class="pre">=</span></code>,
-followed by an expression on the RHS.  Without typing this in, what do you
-think you will see for these.  Explain why.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">10</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span><span class="n">_little_piggies</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>You can see what value a variable has in the jupyter notebook, by entering the
+variable name on a line on its own:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="syntax-in-assignment">
+<h2>Syntax in assignment<a class="headerlink" href="#syntax-in-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Remember, Python is a <em>language</em>.  For a statement to be <em>valid</em> in the
+language, it has to match the rules.  These are called <em>syntax rules</em>.  You
+already know that an assignment statement is:</p>
+<blockquote>
+<div>A variable name, followed by <code class="docutils literal notranslate"><span class="pre">=</span></code> followed by an expression.</div></blockquote>
+<p>Are these valid assignment statements?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>  
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>  
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;g&quot;</span> <span class="o">=</span> <span class="s2">&quot;Interesting&quot;</span>  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">=</span> <span class="mi">3</span>   
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span>  
 </pre></div>
+</div>
+</div>
+<div class="section" id="variables-in-expressions">
+<h2>Variables in expressions<a class="headerlink" href="#variables-in-expressions" title="Permalink to this headline">¶</a></h2>
+<p>The great advantage of variables, is that they can be used in expressions.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>Read this as “<code class="docutils literal notranslate"><span class="pre">c</span></code> gets the value from evaluating <code class="docutils literal notranslate"><span class="pre">a</span></code>”.  What is the result
+from evaluating <code class="docutils literal notranslate"><span class="pre">a</span></code>?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Read this as “<code class="docutils literal notranslate"><span class="pre">d</span></code> gets the value from evaluating <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>”.  What do you
+get from evaluating <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>?</p>
+<p>How about this statement?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Is it a valid assignment statement?  How would you read it?  What would you
+get for:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>  
+</pre></div>
+</div>
+<p>This assignment statement can be called an <em>update</em> assignment, because the
+value in <code class="docutils literal notranslate"><span class="pre">d</span></code> gets <em>updated</em> to the previous value in <code class="docutils literal notranslate"><span class="pre">d</span></code>, plus 1.</p>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Get into pairs.  Allocate the driver and the navigator.  Get a piece of paper
+and a pen or pencil, and put it next to you.  Now try these.</p>
+<p>Make a variable called <code class="docutils literal notranslate"><span class="pre">my_variable</span></code> that is set to have the value 23.</p>
+<p>Make a variable called <code class="docutils literal notranslate"><span class="pre">another_variable</span></code> that is set to have the value 9.</p>
+<p>Add one to the variable <code class="docutils literal notranslate"><span class="pre">another_variable</span></code>.  After you have done this,
+<code class="docutils literal notranslate"><span class="pre">another_variable</span></code> should have the value 10.</p>
+<p>Make a variable called <code class="docutils literal notranslate"><span class="pre">third_variable</span></code> that gets the value of
+<code class="docutils literal notranslate"><span class="pre">another_variable</span></code> multiplied by <code class="docutils literal notranslate"><span class="pre">my_variable</span></code>.</p>
+<p>Show the value that <code class="docutils literal notranslate"><span class="pre">third_variable</span></code> has.</p>
+<p>Have a look at this set of assignments.  What did I do wrong?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">s</span>  
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -139,7 +183,19 @@ think you will see for these.  Explain why.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment</a><ul>
+<li><a class="reference internal" href="#assignment-statements">Assignment statements</a></li>
+<li><a class="reference internal" href="#variable-names">Variable names</a></li>
+<li><a class="reference internal" href="#syntax-in-assignment">Syntax in assignment</a></li>
+<li><a class="reference internal" href="#variables-in-expressions">Variables in expressions</a></li>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
