@@ -1,6 +1,6 @@
-#######################################
-Strings, functions, and types of things
-#######################################
+##########################################
+Strings and functions, and types of things
+##########################################
 
 So far (in :doc:`assignment`) our expressions have all used numbers.
 
@@ -50,12 +50,12 @@ What do you think would happen if I did this?
 
     >>> both_names = my_name + your_name
 
-*********
-Functions
-*********
+***************
+Using functions
+***************
 
-Here we use a *function* for the first time.  The function is called ``len``.
-What do you think it does?
+Here we use a *function*.  The function is called ``len``.  What do you think
+it does here?
 
 .. nbplot::
 
@@ -90,6 +90,67 @@ arguments (the things to print), followed by ``)``.
     >>> print(10)
     10
 
+***************
+Types of things
+***************
+
+We've seen that sometimes values can be numbers, and sometimes they are
+strings.  We often want to know what type of value we have.  You can use the
+``type`` function for that:
+
+.. nbplot::
+
+    >>> a = 10
+    >>> type(a)
+    <class 'int'>
+
+This is an *integer* - a counting number.  Python, like many other programming
+languages, distinguishes between integers (whole numbers) and floating point
+numbers, that can be fractional values.  Here's a floating point value.
+
+.. nbplot::
+
+    >>> b = 10.1
+    >>> type(b)
+    <class 'float'>
+
+Python can tell it is a floating point value, because of the decimal point.
+For example, what will you get for this, do you think?
+
+.. nbplot::
+
+    >>> c = 10.0
+    >>> type(c)  # doctest: +SKIP
+
+What do you think you will get for this?
+
+.. nbplot::
+
+    >>> # An int plus a float
+    >>> d = c + a
+    >>> type(d)  # doctest: +SKIP
+
+The function ``float`` converts integers, and other things, into floating
+point values.  Guess what other things.
+
+.. nbplot::
+
+    >>> # a will be an int
+    >>> a = 10
+    >>> e = float(a)
+    >>> e
+    10.0
+    >>> type(e)
+    <class 'float'>
+
+Finally, what type of thing is a string?
+
+.. nbplot::
+
+    >>> my_name = "Matthew"
+    >>> type(my_name)
+    <class 'str'>
+
 ********
 Exercise
 ********
@@ -100,8 +161,8 @@ and a pen or pencil, and put it next to you.
 Make a variable ``driver_name`` that has the value of the driver's name, (as a
 string).
 
-Make a variable ``navigator_name`` that has the value of the driver's name, (as a
-string).
+Make a variable ``navigator_name`` that has the value of the driver's name,
+(as a string).
 
 Make a variable ``team_name`` that has the value of the concatenation of the
 driver's name and the navigators name.

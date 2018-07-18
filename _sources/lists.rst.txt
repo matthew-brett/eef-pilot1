@@ -73,13 +73,23 @@ particular element occurs in the list.
     >>> another_list.count(99)
     0
 
-Exercises:
+#########
+Exercises
+#########
 
-Use a ``for`` loop to make a list of all the numbers between 0 and 10.
+Make a list with all the odd numbers from 1 through 9 (just type it in for
+now).  It should look this this when you print it::
 
-Use a ``for`` loop to make a list of all the numbers from 0 through 99 that
-are divisible by 3 and by 4.
+    [1, 3, 5, 7, 9]
 
-Use a ``for`` loop and the `randint` function from the ``random`` module to
-make 100 random integers in the range 0 through 10.  Count how many zeros you
-got.
+Print out the number of elements there are in this list.
+
+Print out the number of 7s in the list.
+
+Append the value 7 to this list.  It should print out as::
+
+    [1, 3, 5, 7, 9, 7]
+
+Print out the number of 7s again.
+
+Append another 7.  Print out the number of 7s.

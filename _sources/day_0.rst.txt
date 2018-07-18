@@ -30,6 +30,17 @@ The problem
 * On debugging.
 * :doc:`assignment`.
 * :doc:`strings`.
+* :doc:`lists`.
+* :doc:`comparisons`.
+* :doc:`if_for`.
+
+********
+Homework
+********
+
+Go to https://www.learnpython.org . Do the tutorial from the first chapter
+"Hello, World!", to the chapter on functions. You can miss out the chapter on
+string formatting if you like.  We'll use these ideas tomorrow.
 
 .. curriculum
 

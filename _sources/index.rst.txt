@@ -47,7 +47,6 @@ algorithms and data analysis at the University of Birmingham.
     slim_setup
     assignment
     three_girls
-    print_if_for
     lists
     functions
     three_girls_no_lists
@@ -59,3 +58,5 @@ algorithms and data analysis at the University of Birmingham.
     what_is_this
     strings
     notes
+    if_for
+    comparisons

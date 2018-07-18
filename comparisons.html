@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Schedule &#8212; Tutorials on imaging, computing and mathematics</title>
+    <title>Comparisions, True, and False &#8212; Tutorials on imaging, computing and mathematics</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -17,8 +17,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Day 0" href="day_0.html" />
-    <link rel="prev" title="Setup beforehand" href="setup_beforehand.html" />
+    <link rel="prev" title="If and For" href="if_for.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,17 +34,36 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="schedule">
-<h1>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">¶</a></h1>
-<p>I’ll fill out the schedule before each day.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="day_0.html">Day 0</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="day_0.html#what-is-data-science-why-how">What is data science.  Why? How?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="day_0.html#homework">Homework</a></li>
+  <div class="section" id="comparisions-true-and-false">
+<h1>Comparisions, True, and False<a class="headerlink" href="#comparisions-true-and-false" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="comparisons.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
 </ul>
-</li>
-</ul>
+<p>We have seen expressions returning values that are numbers, and strings.  Now
+we come across a new type of value, called <em>boolean</em> values.</p>
+<p>These are values of <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Is a less than 15?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">15</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">8</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>We can test exact equality with double equals - <code class="docutils literal notranslate"><span class="pre">==</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="mi">15</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>We can test for inequality (not exactly equal) with <code class="docutils literal notranslate"><span class="pre">!=</span></code> (read as “not
+equal”):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">!=</span> <span class="mi">15</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">!=</span> <span class="mi">10</span>
+<span class="go">False</span>
+</pre></div>
 </div>
 </div>
 
@@ -59,15 +77,14 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="setup_beforehand.html" title="previous chapter">Setup beforehand</a></li>
-      <li>Next: <a href="day_0.html" title="next chapter">Day 0</a></li>
+      <li>Previous: <a href="if_for.html" title="previous chapter">If and For</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/schedule.rst.txt"
+      <li><a href="_sources/comparisons.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -95,7 +112,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
-      <a href="_sources/schedule.rst.txt"
+      <a href="_sources/comparisons.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

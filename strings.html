@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Strings, functions, and types of things &#8212; Tutorials on imaging, computing and mathematics</title>
+    <title>Strings and functions, and types of things &#8212; Tutorials on imaging, computing and mathematics</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -17,6 +17,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="notes.html" />
+    <link rel="prev" title="What is this?" href="what_is_this.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,8 +35,8 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="strings-functions-and-types-of-things">
-<h1>Strings, functions, and types of things<a class="headerlink" href="#strings-functions-and-types-of-things" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="strings-and-functions-and-types-of-things">
+<h1>Strings and functions, and types of things<a class="headerlink" href="#strings-and-functions-and-types-of-things" title="Permalink to this headline">¶</a></h1>
 <p>So far (in <a class="reference internal" href="assignment.html"><span class="doc">Assignment</span></a>) our expressions have all used numbers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -70,10 +72,10 @@ that <code class="docutils literal notranslate"><span class="pre">Matthew</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<p>Here we use a <em>function</em> for the first time.  The function is called <code class="docutils literal notranslate"><span class="pre">len</span></code>.
-What do you think it does?</p>
+<div class="section" id="using-functions">
+<h2>Using functions<a class="headerlink" href="#using-functions" title="Permalink to this headline">¶</a></h2>
+<p>Here we use a <em>function</em>.  The function is called <code class="docutils literal notranslate"><span class="pre">len</span></code>.  What do you think
+it does here?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">how_long</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_name</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">how_long</span>
 <span class="go">7</span>
@@ -103,14 +105,62 @@ arguments (the things to print), followed by <code class="docutils literal notra
 </pre></div>
 </div>
 </div>
+<div class="section" id="types-of-things">
+<h2>Types of things<a class="headerlink" href="#types-of-things" title="Permalink to this headline">¶</a></h2>
+<p>We’ve seen that sometimes values can be numbers, and sometimes they are
+strings.  We often want to know what type of value we have.  You can use the
+<code class="docutils literal notranslate"><span class="pre">type</span></code> function for that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+</pre></div>
+</div>
+<p>This is an <em>integer</em> - a counting number.  Python, like many other programming
+languages, distinguishes between integers (whole numbers) and floating point
+numbers, that can be fractional values.  Here’s a floating point value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mf">10.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Python can tell it is a floating point value, because of the decimal point.
+For example, what will you get for this, do you think?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p>What do you think you will get for this?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An int plus a float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">float</span></code> converts integers, and other things, into floating
+point values.  Guess what other things.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># a will be an int</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Finally, what type of thing is a string?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">my_name</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>Get into pairs.  Allocate the driver and the navigator.  Get a piece of paper
 and a pen or pencil, and put it next to you.</p>
 <p>Make a variable <code class="docutils literal notranslate"><span class="pre">driver_name</span></code> that has the value of the driver’s name, (as a
 string).</p>
-<p>Make a variable <code class="docutils literal notranslate"><span class="pre">navigator_name</span></code> that has the value of the driver’s name, (as a
-string).</p>
+<p>Make a variable <code class="docutils literal notranslate"><span class="pre">navigator_name</span></code> that has the value of the driver’s name,
+(as a string).</p>
 <p>Make a variable <code class="docutils literal notranslate"><span class="pre">team_name</span></code> that has the value of the concatenation of the
 driver’s name and the navigators name.</p>
 <p>Make a variable <code class="docutils literal notranslate"><span class="pre">team_len</span></code> that is the length of <code class="docutils literal notranslate"><span class="pre">team_name</span></code>.</p>
@@ -129,9 +179,10 @@ driver’s name followed by a space, followed by the navigator’s name.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Strings, functions, and types of things</a><ul>
+<li><a class="reference internal" href="#">Strings and functions, and types of things</a><ul>
 <li><a class="reference internal" href="#strings">Strings</a></li>
-<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#using-functions">Using functions</a></li>
+<li><a class="reference internal" href="#types-of-things">Types of things</a></li>
 <li><a class="reference internal" href="#exercise">Exercise</a></li>
 </ul>
 </li>
@@ -140,6 +191,8 @@ driver’s name followed by a space, followed by the navigator’s name.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="what_is_this.html" title="previous chapter">What is this?</a></li>
+      <li>Next: <a href="notes.html" title="next chapter">&lt;no title&gt;</a></li>
   </ul></li>
 </ul>
 </div>
