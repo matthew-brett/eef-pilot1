@@ -31,9 +31,4 @@ Homework
 
 http://codingbat.com/python/Warmup-1
 
-.. [#male-births] `Official UK government statistics
-   <https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014>`_
-   give the birth ratio as 105.3. This the number of boys born for every 100
-   girls.
-
 .. include:: links_names.inc
