@@ -97,6 +97,11 @@ Now finish up your calculation of the mean by dividing ``total`` by the number
 of elements in ``a_list``.  It should equal the answer above.  You've
 calculated the mean!  Now it is time to put this into a function.
 
+If you've done the exercise, make a new list, that is the elements of the old
+list, with the mean subtracted from each element. Call this new list
+``deviations``. Sum all the elements in the ``deviations`` list.  Can you see
+why the sum must be the value you got, by doing a little algebra?
+
 ***************************
 Back to write your-own-mean
 ***************************
@@ -184,9 +189,9 @@ Here's a template for you to copy into a Notebook.
     ...     # You may like to remove these prints later
     ...     total = 0
     ...     # Use a for loop to go through each element in ``some_values``
-    ...     for element in some_values:
+    ...     for value in some_values:
     ...         # Add each element to the total
-    ...         total = total + element
+    ...         total = total + value
     ...     # When that is done, then return total divided by number of
     ...     # elements
     ...     return total / len(some_values)
@@ -206,6 +211,12 @@ up ``my_mean``, run the ``my_mean`` cell, then run the test cell again, to check
     ... else:
     ...     print("Oops, expected 4.0 but got", result)
     Yes! Nice job
+
+If you've finished that, look around to see if you can find a library that has
+a function to calculates the mean (Google for "Python mean"). Make a new test
+function with several lists, testing that each of the lists gets the same mean
+from ``my_mean`` as the other mean function you found. Think of a way of
+generating a large number of different lists to test.
 
 ******************
 Standard deviation
@@ -317,13 +328,13 @@ Putting that all together:
     >>> mu = my_mean(a_list)
     >>> # Subtract mean from each value, to get the deviations.
     >>> deviations = []
-    >>> for element in a_list:
-    ...     deviation = element - mu
+    >>> for value in a_list:
+    ...     deviation = value - mu
     ...     deviations.append(deviation)
     >>> # Calculate the squared deviations:
     >>> sq_deviations = []
-    >>> for element in deviations:
-    ...     sq_deviation = element ** 2
+    >>> for value in deviations:
+    ...     sq_deviation = value ** 2
     ...     sq_deviations.append(sq_deviation)
     >>> # Population variance is mean of square deviations
     >>> variance = my_mean(sq_deviations)
@@ -345,6 +356,9 @@ I've started that off for you with ``mu = my_mean(some_values)``.
 
 .. nbplot::
 
+    >>> # You need the math library for sqrt
+    >>> import math
+    >>>
     >>> def my_std(some_values):
     ...     # We plan to return standard deviation of values in list "values"
     ...     print("Running inside my_std function")
@@ -364,8 +378,8 @@ I've started that off for you with ``mu = my_mean(some_values)``.
     ...     sum_sq_dev = 0
     ...     # First calculate the mean
     ...     mu = my_mean(some_values)
-    ...     for element in some_values:
-    ...         sq_dev = (element - mu) ** 2
+    ...     for value in some_values:
+    ...         sq_dev = value - mu) ** 2
     ...         sum_sq_dev = sum_sq_dev + sq_dev
     ...     variance = sum_sq_dev / len(some_values)
     ...     return math.sqrt(variance)
@@ -375,6 +389,7 @@ you see ``Crushed it``.
 
 .. nbplot::
 
+    >>> import numpy
     >>> result = my_std(a_list)
     >>> if result == numpy.std(a_list):
     ...     print("Crushed it")
@@ -385,3 +400,17 @@ you see ``Crushed it``.
 For extra points, see if you can reduce the two ``for`` loops to one ``for``
 loop in the ``my_std`` function.  Hint: add up the total of the squared
 deviations in the loop.
+
+Next try creating a function for the *sample* standard deviation.  Copy your
+``my_std`` function above, and rename it as ``my_sample_std``.
+
+Thus far, we have calculated the *population* standard deviation, where the
+*population* variance is the sum of the squared deviations, divided by $N$.
+$N$ is the number of elements. Therefore, the population variance is the
+mean of the squared deviations.
+
+The *sample* variance is the sum of the squared deviations, divided by $N−1$.
+The sample standard deviation is the square root of the sample variance.
+
+The function ``stdev`` from the ``statistics`` module calculates the sample
+standard deviation. Test against that.

@@ -119,6 +119,10 @@ the left by the number on the right.  Here are some examples:</p>
 by setting various values of <code class="docutils literal notranslate"><span class="pre">x</span></code>, and running the cell.</p>
 <p>What happens if you forget the colon <code class="docutils literal notranslate"><span class="pre">:</span></code> at the end of the <code class="docutils literal notranslate"><span class="pre">if</span></code> line?</p>
 <p>What happens if you forget to indent the block?</p>
+<p>Now print “no” if the number is divisible by 7 (and “yes” if it is).</p>
+<p>Now print “yes 7” if the number is divisible by 7, otherwise print “yes 4” if
+the number is divisible by 4 otherwise print “no neither”.</p>
+<p>Careful.  If <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">28</span></code>, you should only see “yes 7”, not “yes 4”.</p>
 </div>
 <div class="section" id="for-loops">
 <h2>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
@@ -127,7 +131,7 @@ The way we usually do this in Python is using a <code class="docutils literal no
 looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">1</span>
 <span class="go">3</span>
@@ -168,6 +172,14 @@ print <code class="docutils literal notranslate"><span class="pre">value</span><
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>What would happen if I do this?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Here I am&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
@@ -178,9 +190,15 @@ look something like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># A variable to hold the running total of the numbers</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">odd_numbers</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="s2">&quot;Do something here&quot;</span>
+<span class="gp">... </span>    <span class="c1"># The first time through the loop I should get get 1</span>
+<span class="gp">... </span>    <span class="c1"># The second time through the loop I get 4 (1 + 3 == 4)</span>
+<span class="gp">... </span>    <span class="c1"># The third time through the loop I get 9 (4 + 5 == 9)</span>
+<span class="gp">... </span>    <span class="c1"># The fourth time through the loop I get 16 (9 + 7 == 16)</span>
+<span class="gp">... </span>    <span class="c1"># The fifth time through the loop I get 25 (16 + 9 == 25)</span>
+<span class="gp">... </span>    <span class="c1"># Do something here to modify total</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Current total is&quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 <span class="go">25</span>
 </pre></div>
 </div>
@@ -212,8 +230,9 @@ thing into a list to show these numbers:</p>
 </div>
 <div class="section" id="id1">
 <h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to print out the sum of the numbers from 0 to 40,
-inclusive.  Your loop will look something like this:</p>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to calculate out the sum of the numbers from 0 to 40,
+inclusive.  Print out the total at the end. Your loop will look something like
+this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; # A variable to hold the running total of the numbers
 &gt;&gt;&gt; total = 0
 &gt;&gt;&gt; for value in ?

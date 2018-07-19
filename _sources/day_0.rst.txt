@@ -32,6 +32,15 @@ What is data science.  Why? How?
 * :doc:`comparisons`.
 * :doc:`if_for`.
 
+********************
+Notebooks from class
+********************
+
+* :download:`brexit_run_through.ipynb`;
+* :download:`assignment_numbers_strings_futz.ipynb`
+* :download:`comparison_futz.ipynb`
+* :download:`list_futz.ipynb`
+
 ********
 Homework
 ********

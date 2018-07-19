@@ -18,6 +18,13 @@ Then we extend the same machinery to ask our Brexit question.
 * :doc:`functions`
 * :doc:`three_girls`
 
+********************
+Notebooks from class
+********************
+
+* :download:`if_and_for_futz.ipynb`
+* :download:`function_futz.ipynb`
+
 ********
 Homework
 ********

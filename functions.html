@@ -110,6 +110,10 @@ this:</p>
 <p>Now finish up your calculation of the mean by dividing <code class="docutils literal notranslate"><span class="pre">total</span></code> by the number
 of elements in <code class="docutils literal notranslate"><span class="pre">a_list</span></code>.  It should equal the answer above.  You’ve
 calculated the mean!  Now it is time to put this into a function.</p>
+<p>If you’ve done the exercise, make a new list, that is the elements of the old
+list, with the mean subtracted from each element. Call this new list
+<code class="docutils literal notranslate"><span class="pre">deviations</span></code>. Sum all the elements in the <code class="docutils literal notranslate"><span class="pre">deviations</span></code> list.  Can you see
+why the sum must be the value you got, by doing a little algebra?</p>
 </div>
 </div>
 <div class="section" id="back-to-write-your-own-mean">
@@ -188,6 +192,11 @@ up <code class="docutils literal notranslate"><span class="pre">my_mean</span></
 <span class="go">Yes! Nice job</span>
 </pre></div>
 </div>
+<p>If you’ve finished that, look around to see if you can find a library that has
+a function to calculates the mean (Google for “Python mean”). Make a new test
+function with several lists, testing that each of the lists gets the same mean
+from <code class="docutils literal notranslate"><span class="pre">my_mean</span></code> as the other mean function you found. Think of a way of
+generating a large number of different lists to test.</p>
 </div>
 </div>
 <div class="section" id="standard-deviation">
@@ -268,13 +277,13 @@ square root function, which we will get from the <code class="docutils literal n
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">my_mean</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Subtract mean from each value, to get the deviations.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deviations</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">deviation</span> <span class="o">=</span> <span class="n">element</span> <span class="o">-</span> <span class="n">mu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">deviation</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="n">mu</span>
 <span class="gp">... </span>    <span class="n">deviations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deviation</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the squared deviations:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sq_deviations</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">deviations</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">sq_deviation</span> <span class="o">=</span> <span class="n">element</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">deviations</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">sq_deviation</span> <span class="o">=</span> <span class="n">value</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="gp">... </span>    <span class="n">sq_deviations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sq_deviation</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Population variance is mean of square deviations</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">variance</span> <span class="o">=</span> <span class="n">my_mean</span><span class="p">(</span><span class="n">sq_deviations</span><span class="p">)</span>
@@ -291,7 +300,10 @@ square root function, which we will get from the <code class="docutils literal n
 <p>Take the contents of the cell above, and put it into the function, renaming
 <code class="docutils literal notranslate"><span class="pre">a_list</span></code> to <code class="docutils literal notranslate"><span class="pre">some_values</span></code>, where you need to, and fixing the indentation.</p>
 <p>I’ve started that off for you with <code class="docutils literal notranslate"><span class="pre">mu</span> <span class="pre">=</span> <span class="pre">my_mean(some_values)</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_std</span><span class="p">(</span><span class="n">some_values</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># You need the math library for sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_std</span><span class="p">(</span><span class="n">some_values</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="c1"># We plan to return standard deviation of values in list &quot;values&quot;</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Running inside my_std function&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">some_values</span><span class="p">)</span>
@@ -304,7 +316,8 @@ square root function, which we will get from the <code class="docutils literal n
 </div>
 <p>Here is a test cell. Keep running your <code class="docutils literal notranslate"><span class="pre">my_std</span></code> cell and the test cell until
 you see <code class="docutils literal notranslate"><span class="pre">Crushed</span> <span class="pre">it</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">my_std</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">my_std</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">numpy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Crushed it&quot;</span><span class="p">)</span>
 <span class="gp">... </span><span class="k">else</span><span class="p">:</span>
@@ -315,6 +328,16 @@ you see <code class="docutils literal notranslate"><span class="pre">Crushed</sp
 <p>For extra points, see if you can reduce the two <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to one <code class="docutils literal notranslate"><span class="pre">for</span></code>
 loop in the <code class="docutils literal notranslate"><span class="pre">my_std</span></code> function.  Hint: add up the total of the squared
 deviations in the loop.</p>
+<p>Next try creating a function for the <em>sample</em> standard deviation.  Copy your
+<code class="docutils literal notranslate"><span class="pre">my_std</span></code> function above, and rename it as <code class="docutils literal notranslate"><span class="pre">my_sample_std</span></code>.</p>
+<p>Thus far, we have calculated the <em>population</em> standard deviation, where the
+<em>population</em> variance is the sum of the squared deviations, divided by <span class="math notranslate nohighlight">\(N\)</span>.
+<span class="math notranslate nohighlight">\(N\)</span> is the number of elements. Therefore, the population variance is the
+mean of the squared deviations.</p>
+<p>The <em>sample</em> variance is the sum of the squared deviations, divided by <span class="math notranslate nohighlight">\(N−1\)</span>.
+The sample standard deviation is the square root of the sample variance.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">stdev</span></code> from the <code class="docutils literal notranslate"><span class="pre">statistics</span></code> module calculates the sample
+standard deviation. Test against that.</p>
 </div>
 </div>
 
