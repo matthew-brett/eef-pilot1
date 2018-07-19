@@ -120,13 +120,83 @@ answer?</p>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Got&quot;</span><span class="p">,</span> <span class="n">long_run_prob</span><span class="p">,</span> <span class="s2">&quot;but expected something near&quot;</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now make a for loop that collects four samples from <code class="docutils literal notranslate"><span class="pre">get_0_or_1</span></code>, and
-calculates the sum of those values.  The four values are four children.  The
-sum is the number of girls.</p>
-<p>Now take that code, and run it 10000 times.  Collect the “number of girls”
-value in a list, for each time you go through the loop.</p>
-<p>At the end, calculate how many families had 3 girls.  Divide by the number of
-families you made (10000).</p>
+</div>
+<div class="section" id="make-a-family">
+<h2>Make a family<a class="headerlink" href="#make-a-family" title="Permalink to this headline">¶</a></h2>
+<p>Our task now is to make a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that collects four samples from
+<code class="docutils literal notranslate"><span class="pre">get_0_or_1</span></code>, and counts how many of these values are 1. This is our number
+of girls in the family.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">child</span> <span class="o">=</span> <span class="n">get_0_or_1</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_girls</span> <span class="o">=</span> <span class="n">children</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_girls</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Make a function called <code class="docutils literal notranslate"><span class="pre">girls_in_family</span></code>, that takes no arguments.  The
+function will make a series of children, just like the cell above, then count
+the girls, and return the number of girls.  Like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">girls_in_family</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="c1"># Make a family of 4, return number of girls</span>
+<span class="gp">... </span>    <span class="c1"># Your code here, likeley from the cell above</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">n_girls</span>
+</pre></div>
+</div>
+<p>Call this function a few times to check you get some answer between 0 and 4:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">girls_in_family</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here’s a test cell for your function.  When your function is right, this test
+should pass.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Test for girls_in_family</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Assumes the right answer is 0.25, on average</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">girl_counts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">girl_count</span> <span class="o">=</span> <span class="n">girls_in_family</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">girl_count</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">girl_count</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Expecting number between 0 and 4, got&quot;</span><span class="p">,</span> <span class="n">girl_count</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">girl_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">girl_count</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proportion</span> <span class="o">=</span> <span class="n">girl_counts</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">proportion</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Could well be right&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Expecting something near 0.25, got&quot;</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you get that done quickly, try rewriting your <code class="docutils literal notranslate"><span class="pre">girls_in_family</span></code> function
+to take two arguments, the probability of having a girl (up until now, 0.5),
+and the number of children (up until now, 4).  It would start like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">girls_in_family</span><span class="p">(</span><span class="n">prob_girl</span><span class="p">,</span> <span class="n">n_chilren</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Make a family of n_children, return number of girls</span>
+<span class="gp">... </span>    <span class="c1"># Your code here</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">n_girls</span>
+</pre></div>
+</div>
+<p>Modify the test cell above to use this new code.</p>
+</div>
+</div>
+<div class="section" id="how-many-girls">
+<h2>How many girls?<a class="headerlink" href="#how-many-girls" title="Permalink to this headline">¶</a></h2>
+<p>Now we take that code, and run it 10000 times.  We collect the “number of
+girls” value in a list, for each time we go through the loop.</p>
+<p>At the end, we calculate how many families had 3 girls.  Divide by the number
+of families you made (10000).</p>
+<p>Something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">girl_counts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">girl_count</span> <span class="o">=</span> <span class="n">girls_in_family</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">girl_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">girl_count</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proportion</span> <span class="o">=</span> <span class="n">girl_counts</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Estimate for probability of 3 girls is&quot;</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run this a few times, to get an idea of the range of answers.</p>
 </div>
 </div>
 
@@ -141,6 +211,11 @@ families you made (10000).</p>
   <ul>
 <li><a class="reference internal" href="#">Three girls</a><ul>
 <li><a class="reference internal" href="#exercise">Exercise</a></li>
+<li><a class="reference internal" href="#make-a-family">Make a family</a><ul>
+<li><a class="reference internal" href="#id1">Exercise</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-many-girls">How many girls?</a></li>
 </ul>
 </li>
 </ul>

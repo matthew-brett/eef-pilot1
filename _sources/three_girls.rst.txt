@@ -123,12 +123,112 @@ answer?
     ... else:
     ...     print("Got", long_run_prob, "but expected something near", prob)
 
-Now make a for loop that collects four samples from ``get_0_or_1``, and
-calculates the sum of those values.  The four values are four children.  The
-sum is the number of girls.
+*************
+Make a family
+*************
 
-Now take that code, and run it 10000 times.  Collect the "number of girls"
-value in a list, for each time you go through the loop.
+Our task now is to make a ``for`` loop that collects four samples from
+``get_0_or_1``, and counts how many of these values are 1. This is our number
+of girls in the family.
 
-At the end, calculate how many families had 3 girls.  Divide by the number of
-families you made (10000).
+.. nbplot::
+
+    >>> children = []
+    >>> for i in range(4):
+    ...     child = get_0_or_1(0.5)
+    ...     children.append(child)
+    ...
+    >>> n_girls = children.count(1)
+    >>> n_girls
+
+Exercise
+========
+
+Make a function called ``girls_in_family``, that takes no arguments.  The
+function will make a series of children, just like the cell above, then count
+the girls, and return the number of girls.  Like this:
+
+.. nbplot::
+
+    >>> def girls_in_family():
+    ...     # Make a family of 4, return number of girls
+    ...     # Your code here, likeley from the cell above
+    ...     return n_girls
+
+.. nbplot::
+    :hide-from: all
+    :show-to: doctest
+
+    >>> def girls_in_family():
+    ...     # Make a family of 4, return number of girls
+    ...     # Your code here, likeley from the cell above
+    ...     children = []
+    ...     for i in range(4):
+    ...         child = get_0_or_1(0.5)
+    ...         children.append(child)
+    ...     n_girls = children.count(1)
+    ...     return n_girls
+
+Call this function a few times to check you get some answer between 0 and 4:
+
+.. nbplot::
+
+    >>> girls_in_family()
+
+Here's a test cell for your function.  When your function is right, this test
+should pass.
+
+.. nbplot::
+
+    >>> # Test for girls_in_family
+    >>> # Assumes the right answer is 0.25, on average
+    >>> girl_counts = []
+    >>> for i in range(10000):
+    ...     girl_count = girls_in_family()
+    ...     if girl_count < 0 or girl_count > 4:
+    ...         print("Expecting number between 0 and 4, got", girl_count)
+    ...     girl_counts.append(girl_count)
+    ...
+    >>> proportion = girl_counts.count(3) / 10000
+    >>> if abs(proportion - 0.25) < 0.01:
+    ...     print("Could well be right")
+    ... else:
+    ...     print("Expecting something near 0.25, got", proportion)
+
+If you get that done quickly, try rewriting your ``girls_in_family`` function
+to take two arguments, the probability of having a girl (up until now, 0.5),
+and the number of children (up until now, 4).  It would start like this:
+
+.. nbplot::
+    :hide-from: doctest
+
+    >>> def girls_in_family(prob_girl, n_chilren):
+    ...     # Make a family of n_children, return number of girls
+    ...     # Your code here
+    ...     return n_girls
+
+Modify the test cell above to use this new code.
+
+***************
+How many girls?
+***************
+
+Now we take that code, and run it 10000 times.  We collect the "number of
+girls" value in a list, for each time we go through the loop.
+
+At the end, we calculate how many families had 3 girls.  Divide by the number
+of families you made (10000).
+
+Something like this:
+
+.. nbplot::
+
+    >>> girl_counts = []
+    >>> for i in range(10000):
+    ...     girl_count = girls_in_family()
+    ...     girl_counts.append(girl_count)
+    ...
+    >>> proportion = girl_counts.count(3) / 10000
+    >>> print("Estimate for probability of 3 girls is", proportion)
+
+Run this a few times, to get an idea of the range of answers.
