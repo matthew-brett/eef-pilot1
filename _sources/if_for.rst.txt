@@ -214,7 +214,10 @@ Exercise
 ********
 
 Use a ``for`` loop to print out the sum of the numbers from 0 to 40,
-inclusive.  Your loop will look something like this::
+inclusive.  Your loop will look something like this:
+
+.. nbplot::
+    :hide-from: doctest
 
     >>> # A variable to hold the running total of the numbers
     >>> total = 0

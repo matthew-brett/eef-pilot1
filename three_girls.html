@@ -40,57 +40,93 @@
 <ul class="simple">
 <li><a class="reference download internal" href="three_girls.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
 </ul>
-<p>We will use the <code class="docutils literal notranslate"><span class="pre">choice</span></code> function from the  <code class="docutils literal notranslate"><span class="pre">random</span></code> module.</p>
+<p>Now we have the machinery we need to solve the three girls simulation.</p>
+<p>Let’s start with the problem of deciding whether the next child is a boy or a
+girl.  We take a random number between 0 and 1, and if it is less than 0.5, we
+will call that 1, where 1 means a girl.  Otherwise we will call it 0, where 0
+means a boy.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">random</span></code> module for that:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
-</pre></div>
-</div>
-<p>This is a module:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
 <span class="go">&lt;class &#39;module&#39;&gt;</span>
 </pre></div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">random.</span></code> and then Tab to see the functions inside the module, from
-within the Notebook.</p>
-<p>We will use <code class="docutils literal notranslate"><span class="pre">random.choice</span></code>, a function within the <code class="docutils literal notranslate"><span class="pre">random</span></code> module.</p>
-<p>You can check the help with <code class="docutils literal notranslate"><span class="pre">random.choice?</span></code> in the Notebook.</p>
-<p>Here we ask it to choose randomly between the two letters in the string,
-<code class="docutils literal notranslate"><span class="pre">&quot;HT&quot;</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;HT&#39;</span><span class="p">)</span>
-<span class="go">&#39;H&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;HT&#39;</span><span class="p">)</span>
-<span class="go">&#39;T&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;HT&#39;</span><span class="p">)</span>
-<span class="go">&#39;H&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;HT&#39;</span><span class="p">)</span>
-<span class="go">&#39;H&#39;</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">random</span></code> function in the <code class="docutils literal notranslate"><span class="pre">random</span></code> module, returns a random number
+between 0 and 1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="go">0.8899006007111...</span>
 </pre></div>
 </div>
-<p>A coin toss!</p>
-<p>Now we have everything we need to solve the problem:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make list to store counts of girls in each family</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">girl_counts</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make 10000 families</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="c1"># Make one family</span>
-<span class="gp">... </span>    <span class="n">family</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">... </span>    <span class="c1"># Have 4 children</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="n">child</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;GB&#39;</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="n">family</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1"># Store the number of girls in this family</span>
-<span class="gp">... </span>    <span class="n">n_girls</span> <span class="o">=</span> <span class="n">family</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">girl_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_girls</span><span class="p">)</span>
+<p>Check what the function does with <code class="docutils literal notranslate"><span class="pre">random.random?</span></code> in a Notebook cell.</p>
+<p>Now we’ll decide if the next child is a boy or a girl.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a random number, decide if it&#39;s a girl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random_no</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">random_no</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># A girl</span>
+<span class="gp">... </span>    <span class="n">child</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># A boy</span>
+<span class="gp">... </span>    <span class="n">child</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the number of families with 3 girls</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n_with_3</span> <span class="o">=</span> <span class="n">girl_counts</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">proportion</span> <span class="o">=</span> <span class="n">n_with_3</span> <span class="o">/</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child</span>
+<span class="go">1</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proportion</span>
-<span class="go">0.2548</span>
+<p>Run this a few times to make sure it produces 0 and 1 roughly the same number
+of times.</p>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Now we want to make a function that returns 0 or 1, where 1 has a given
+probability.  On our case we want 1 to have probability 0.5, but maybe we will
+change our minds about that later.  Here’s a template.  Fix it up to return 0
+or 1 with the given probability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">get_0_or_1</span><span class="p">(</span><span class="n">prob_of_1</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Return 0 or 1, where probability of 1 is given by prob_of_1</span>
+<span class="gp">... </span>    <span class="c1"># To start with, we&#39;ll call this function setting prob_of_1 to 0.5</span>
+<span class="gp">... </span>    <span class="n">random_no</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="c1"># What goes here?</span>
+<span class="gp">... </span>        <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span>
 </pre></div>
+</div>
+<p>Here is a test cell.  It collects lots and lots of results, expecting the
+average of all the results to add up to the given probability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Test cell for get_0_or_1, prob == 0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prob</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_0_or_1</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">long_run_prob</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">prob</span> <span class="o">-</span> <span class="n">long_run_prob</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Looks right&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Got&quot;</span><span class="p">,</span> <span class="n">long_run_prob</span><span class="p">,</span> <span class="s2">&quot;but expected something near&quot;</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let’s try when the <code class="docutils literal notranslate"><span class="pre">prob_of_1</span></code> is not 0.5.  Do you still get a good
+answer?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Test cell for get_0_or_1, prob = 0.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prob</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_0_or_1</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">long_run_prob</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">prob</span> <span class="o">-</span> <span class="n">long_run_prob</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Looks right&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Got&quot;</span><span class="p">,</span> <span class="n">long_run_prob</span><span class="p">,</span> <span class="s2">&quot;but expected something near&quot;</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now make a for loop that collects four samples from <code class="docutils literal notranslate"><span class="pre">get_0_or_1</span></code>, and
+calculates the sum of those values.  The four values are four children.  The
+sum is the number of girls.</p>
+<p>Now take that code, and run it 10000 times.  Collect the “number of girls”
+value in a list, for each time you go through the loop.</p>
+<p>At the end, calculate how many families had 3 girls.  Divide by the number of
+families you made (10000).</p>
 </div>
 </div>
 
@@ -100,7 +136,15 @@ within the Notebook.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Three girls</a><ul>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
