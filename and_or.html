@@ -55,6 +55,8 @@
 </pre></div>
 </div>
 <p>We can combine expressions like these with <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
+<div class="section" id="and">
+<h2>And<a class="headerlink" href="#and" title="Permalink to this headline">¶</a></h2>
 <p>Consider <code class="docutils literal notranslate"><span class="pre">and</span></code>. Here is an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
 <span class="go">True</span>
@@ -79,12 +81,51 @@ white.  Both clauses have to be true.</p>
 <span class="go">False</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Start with this code fragment.  Click the triple arrows button at the top right
+to turn off the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> at the front of each line, then copy the code into a cell in a
+Notebook.</p>
+<p>Run the cell.  It should return False.  Modify the variables <code class="docutils literal notranslate"><span class="pre">my_name</span></code> and
+<code class="docutils literal notranslate"><span class="pre">your_name</span></code> until the expression returns True.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change my_name and your_name to make the expression below True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="s2">&quot;Matthew&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">your_name</span> <span class="o">=</span> <span class="s2">&quot;Yogi&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">my_name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">your_name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Now try the code cell below.  Write your expression.  Evaluate the expression
+with the variables below.  It should return True.  Change <code class="docutils literal notranslate"><span class="pre">name</span></code> so that,
+when you evaluate again, it returns False.  Change it back, so it returns True
+again. Now change <code class="docutils literal notranslate"><span class="pre">a</span></code> so that it returns False again.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make expression that is True only when a is less than 5 and</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># number of characters in name is greater than 5.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Yogi&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Your expression here</span>
+</pre></div>
+</div>
+<p>In the cell below, I wanted to return True if <code class="docutils literal notranslate"><span class="pre">x</span></code> is less than 10 and <code class="docutils literal notranslate"><span class="pre">y</span></code>
+is greater than, or equal to <code class="docutils literal notranslate"><span class="pre">x</span></code>.  It isn’t working right.  Copy the code
+into a cell, and fix it until it works. Check it works right for other values
+of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Here&#39;s my expression - I was expecthing this to be True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">x</span>  
+</pre></div>
+</div>
+</div>
+<div class="section" id="or">
+<h2>Or<a class="headerlink" href="#or" title="Permalink to this headline">¶</a></h2>
 <p>Now consider <code class="docutils literal notranslate"><span class="pre">or</span></code>.  Here is an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_number</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="n">my_name</span> <span class="o">==</span> <span class="s2">&quot;Matthew&quot;</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">or</span></code> takes an expression on the left and evalualates it.  If it is True, it
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code> takes an expression on the left and evaluates it.  If it is True, it
 stops and returns True.  Otherwise it continues and evaluates the experession
 on the right.  If this is True, it returns True, otherwise it returns False.</p>
 <p>This is also the same logic as we use in speech.  If I say “jump if the table
@@ -105,6 +146,35 @@ the floor is gray.  Only one of the two clauses has to be true.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change the table_colour variable to make the expression True.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change it back to &quot;red&quot; again to make it false again.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change the floor_colour to make the expression True.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table_colour</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">floor_colour</span> <span class="o">=</span> <span class="s2">&quot;brown&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table_colour</span> <span class="o">==</span> <span class="s2">&quot;brown&quot;</span> <span class="ow">or</span> <span class="n">floor_colour</span> <span class="o">==</span> <span class="s2">&quot;gray&quot;</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Make an expression that evaluates to True if either of the following are True:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">x</span></code> is less than 21</li>
+<li><code class="docutils literal notranslate"><span class="pre">y</span></code> is greater than 42</li>
+</ul>
+<p>Start with the values below, and confirm that your expression evaluates to
+True.  Now try different values of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to show that it behaves
+correctly in all possible combinations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Evaluate to True if either of the following are True:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   x is less than 21</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   y is greater than 42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Your expression here</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -112,7 +182,18 @@ the floor is gray.  Only one of the two clauses has to be true.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">and, or in expressions</a><ul>
+<li><a class="reference internal" href="#and">And</a></li>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+<li><a class="reference internal" href="#or">Or</a></li>
+<li><a class="reference internal" href="#id1">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>

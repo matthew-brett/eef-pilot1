@@ -2,6 +2,9 @@
 Lists
 #####
 
+..  The datacamp tutorial assumes you know list indexing. Also covers
+    adding lists, and multiplying them by a scalar.  Also list slicing.
+
 .. code-links:: clear
 
 We have seen numbers and strings as types.

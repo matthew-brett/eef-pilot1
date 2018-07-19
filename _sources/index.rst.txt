@@ -60,3 +60,4 @@ algorithms and data analysis at the University of Birmingham.
     notes
     if_for
     comparisons
+    my_mean

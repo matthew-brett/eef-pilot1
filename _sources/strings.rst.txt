@@ -2,6 +2,8 @@
 Strings and functions, and types of things
 ##########################################
 
+.. need exercises part way through
+
 So far (in :doc:`assignment`) our expressions have all used numbers.
 
 .. nbplot::

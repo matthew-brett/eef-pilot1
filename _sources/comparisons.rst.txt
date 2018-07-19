@@ -1,6 +1,6 @@
-#############################
-Comparisions, True, and False
-#############################
+############################
+Comparisons, True, and False
+############################
 
 .. code-links:: clear
 

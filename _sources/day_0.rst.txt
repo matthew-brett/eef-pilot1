@@ -20,8 +20,6 @@ To start:
 What is data science.  Why? How?
 ********************************
 
-The problem
-
 * introduction to the course - :download:`talk slides
   <intro_talk_slides.pdf>` [#get-source]_.
 * :doc:`the Brexit problem <brexit_problem>`.

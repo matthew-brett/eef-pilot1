@@ -24,6 +24,10 @@ We are already familiar with expressions like these:
 
 We can combine expressions like these with ``and`` and ``or``.
 
+***
+And
+***
+
 Consider ``and``. Here is an example:
 
 .. nbplot::
@@ -53,6 +57,55 @@ white.  Both clauses have to be true.
     >>> my_number == 9 and my_name == "Matthew"
     False
 
+********
+Exercise
+********
+
+
+Start with this code fragment.  Click the triple arrows button at the top right
+to turn off the ``>>>`` at the front of each line, then copy the code into a cell in a
+Notebook.
+
+Run the cell.  It should return False.  Modify the variables ``my_name`` and
+``your_name`` until the expression returns True.
+
+.. nbplot::
+
+    >>> # Change my_name and your_name to make the expression below True
+    >>> my_name = "Matthew"
+    >>> your_name = "Yogi"
+    >>> len(my_name) == 5 and len(your_name) == 5
+    False
+
+Now try the code cell below.  Write your expression.  Evaluate the expression
+with the variables below.  It should return True.  Change ``name`` so that,
+when you evaluate again, it returns False.  Change it back, so it returns True
+again. Now change ``a`` so that it returns False again.
+
+.. nbplot::
+
+    >>> # Make expression that is True only when a is less than 5 and
+    >>> # number of characters in name is greater than 5.
+    >>> a = 4
+    >>> name = "Yogi"
+    >>> # Your expression here
+
+In the cell below, I wanted to return True if ``x`` is less than 10 and ``y``
+is greater than, or equal to ``x``.  It isn't working right.  Copy the code
+into a cell, and fix it until it works. Check it works right for other values
+of ``x`` and ``y``.
+
+.. nbplot::
+
+    >>> x = 9
+    >>> y = 9
+    >>> # Here's my expression - I was expecthing this to be True
+    >>> x < 10 and x >= x  # doctest: +SKIP
+
+**
+Or
+**
+
 Now consider ``or``.  Here is an example:
 
 .. nbplot::
@@ -60,7 +113,7 @@ Now consider ``or``.  Here is an example:
     >>> my_number == 9 or my_name == "Matthew"
     True
 
-``or`` takes an expression on the left and evalualates it.  If it is True, it
+``or`` takes an expression on the left and evaluates it.  If it is True, it
 stops and returns True.  Otherwise it continues and evaluates the experession
 on the right.  If this is True, it returns True, otherwise it returns False.
 
@@ -82,3 +135,35 @@ the floor is gray.  Only one of the two clauses has to be true.
     >>> # Neither of these are True, so the "or" is False
     >>> my_number == 9 or my_name == "John"
     False
+
+********
+Exercise
+********
+
+.. nbplot::
+
+    >>> # Change the table_colour variable to make the expression True.
+    >>> # Change it back to "red" again to make it false again.
+    >>> # Change the floor_colour to make the expression True.
+    >>> table_colour = "red"
+    >>> floor_colour = "brown"
+    >>> table_colour == "brown" or floor_colour == "gray"
+    False
+
+Make an expression that evaluates to True if either of the following are True:
+
+* ``x`` is less than 21
+* ``y`` is greater than 42
+
+Start with the values below, and confirm that your expression evaluates to
+True.  Now try different values of ``x`` and ``y`` to show that it behaves
+correctly in all possible combinations.
+
+.. nbplot::
+
+    >>> # Evaluate to True if either of the following are True:
+    >>> #   x is less than 21
+    >>> #   y is greater than 42
+    >>> x = 20
+    >>> y = 50
+    >>> # Your expression here
