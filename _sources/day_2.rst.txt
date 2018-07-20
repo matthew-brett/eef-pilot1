@@ -17,5 +17,6 @@ Sampling for real problems
 * :doc:`shuffle`.
 * Adding lists.
 * :doc:`brexit_ages`
+* :doc:`chick_testing`.
 
 .. include:: links_names.inc

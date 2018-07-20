@@ -201,6 +201,25 @@ assortment of values from the original list:
     ...     both = [pooled[:first_len], pooled[first_len:]]
     ...     return both
 
+Let's check that is working as expected:
+
+.. nbplot::
+
+    >>> # Make a couple of lists
+    >>> a_list = [0, 0, 0]
+    >>> b_list = [99, 99, 99, 99]
+
+.. nbplot::
+
+    >>> # Call the function to shuffle the lists
+    >>> join_shuffle_split(a_list, b_list)
+    [[0, 99, 99], [0, 0, 99, 99]]
+
+.. nbplot::
+
+    >>> join_shuffle_split(a_list, b_list)
+    [[99, 99, 99], [99, 0, 0, 0]]
+
 Now for our permutation test.  We've assumed the null hypothesis.  We join the
 lists, and shuffle the combined group.  We'll call the first 541 values
 ``group_A`` and the last 774 values ``group_B``.
@@ -273,7 +292,7 @@ large compared to the distribution of these 10000 differences.
     >>> plt.hist(shuffled_differences)
     (...)
 
-The maximumum of these differences is:
+The maximum of these differences is:
 
 .. nbplot::
 

@@ -1,0 +1,215 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Permuting chicks &#8212; Tutorials on imaging, computing and mathematics</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="permuting-chicks">
+<h1>Permuting chicks<a class="headerlink" href="#permuting-chicks" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference download internal" href="chick_testing.ipynb">Download this page as a Jupyter notebook (no outputs)</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This page uses Python 3 - the most recent version of Python.  If you’ve
+got Python 2, start by running this line, to make Python 2 work more like
+Python 3.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+</pre></div>
+</div>
+</div>
+<p>In a moment we are going to compare some measures we collected from two
+different groups.</p>
+<p>The data we are going to compare is from an experiment in which domestic
+chicks were fed a feed supplement (<code class="docutils literal notranslate"><span class="pre">with_supplement</span></code>), or were fed a normal
+diet without supplements (<code class="docutils literal notranslate"><span class="pre">no_supplement</span></code>). They were weighed after 2 weeks
+on these diets to test whether the supplement increases chick weight.</p>
+<p>Here are the chick weights for the two groups:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">no_supplement</span> <span class="o">=</span> <span class="p">[</span><span class="mi">179</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">227</span><span class="p">,</span> <span class="mi">217</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">143</span><span class="p">,</span> <span class="mi">140</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">with_supplement</span> <span class="o">=</span> <span class="p">[</span><span class="mi">309</span><span class="p">,</span> <span class="mi">229</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">141</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span> <span class="mi">169</span><span class="p">,</span> <span class="mi">213</span><span class="p">,</span> <span class="mi">257</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">271</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">no_supplement</span></code> and <code class="docutils literal notranslate"><span class="pre">with_supplement</span></code> are lists.</p>
+<p>We can get the number of items in the list using <code class="docutils literal notranslate"><span class="pre">len</span></code>. For example, there
+are 10 chicks in the <code class="docutils literal notranslate"><span class="pre">no_supplement</span></code> group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>We can get the sum of the values in the list with <code class="docutils literal notranslate"><span class="pre">sum</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span>
+<span class="go">1602</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Checking that the sum is the addition of all the elements.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">179</span> <span class="o">+</span> <span class="mi">160</span> <span class="o">+</span> <span class="mi">136</span> <span class="o">+</span> <span class="mi">227</span> <span class="o">+</span> <span class="mi">217</span> <span class="o">+</span> <span class="mi">168</span> <span class="o">+</span> <span class="mi">108</span> <span class="o">+</span> <span class="mi">124</span> <span class="o">+</span> <span class="mi">143</span> <span class="o">+</span> <span class="mi">140</span>
+<span class="go">1602</span>
+</pre></div>
+</div>
+<p>The <em>mean</em> of the values in the list is defined as the sum divided by
+the number of items. For example, here is the mean of the weights in the
+<code class="docutils literal notranslate"><span class="pre">no_supplement</span></code> group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span>
+<span class="go">160.2</span>
+</pre></div>
+</div>
+<p>Here is a function to calculate the mean, like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot; Calculates the mean of the values in `some_list`</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can get the mean with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span>
+<span class="go">160.2</span>
+</pre></div>
+</div>
+<p>The mean is greater for the <code class="docutils literal notranslate"><span class="pre">with_supplement</span></code> group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">with_supplement</span><span class="p">)</span>
+<span class="go">218.75</span>
+</pre></div>
+</div>
+<p>The difference between the means is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">observed_difference</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">with_supplement</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">(</span><span class="n">no_supplement</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observed_difference</span>
+<span class="go">58.55000000000001</span>
+</pre></div>
+</div>
+<p>We see that the means of the two groups are different - but can we be
+confident that this difference did not come about by chance?</p>
+<p>Here’s the function from <a class="reference internal" href="brexit_ages.html"><span class="doc">Comparing two groups with permutation testing</span></a>.  It permutes the values between
+the two lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Just in case you haven&#39;t imported this already</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">join_shuffle_split</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Pool the lists, shuffle, split into lists of original length</span>
+<span class="gp">... </span>    <span class="n">first_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">pooled</span> <span class="o">=</span> <span class="n">first_list</span> <span class="o">+</span> <span class="n">second_list</span>
+<span class="gp">... </span>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">both</span> <span class="o">=</span> <span class="p">[</span><span class="n">pooled</span><span class="p">[:</span><span class="n">first_len</span><span class="p">],</span> <span class="n">pooled</span><span class="p">[</span><span class="n">first_len</span><span class="p">:]]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">both</span>
+</pre></div>
+</div>
+<p>Here’s a function from <a class="reference internal" href="brexit_ages.html"><span class="doc">Comparing two groups with permutation testing</span></a> that uses <code class="docutils literal notranslate"><span class="pre">join_shuffle_split</span></code> to
+get fake groups, and calculates the mean difference on those groups:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">difference_in_means</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot; Shuffle values across lists, calculate difference in means.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">fake_lists</span> <span class="o">=</span> <span class="n">join_shuffle_split</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">group_A</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">group_B</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">group_B</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">(</span><span class="n">group_A</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Build up the <em>sampling distribution</em> of the difference in means.</p>
+<p>Make an empty list called <code class="docutils literal notranslate"><span class="pre">differences</span></code>.</p>
+<p>Make a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that runs 10000 times.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, make a new mean difference using <code class="docutils literal notranslate"><span class="pre">difference_in_means</span></code>.</p>
+<p>Append this mean difference to <code class="docutils literal notranslate"><span class="pre">differences</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">differences</span></code> now contains an estimate of the sampling distribution.</p>
+<p>Show a histogram of the distribution.</p>
+<p>Maybe using the code from the end of <a class="reference internal" href="brexit_ages.html"><span class="doc">Comparing two groups with permutation testing</span></a>, count how many of
+values in <code class="docutils literal notranslate"><span class="pre">differences</span></code> (the sampling distribution) are greater than, or
+equal to <code class="docutils literal notranslate"><span class="pre">observed_difference</span></code>.</p>
+<p>Divide by 10000 to get the proportion of the sampling distribution that is
+greater than or equal to <code class="docutils literal notranslate"><span class="pre">observed_difference</span></code>.</p>
+<p>Do you think <code class="docutils literal notranslate"><span class="pre">observed_difference</span></code> is likely, if the null hypothesis is
+true?</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Permuting chicks</a><ul>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/chick_testing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-18, Matthew Brett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/chick_testing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on working with lists" href="more_on_lists.html" />
-    <link rel="prev" title="Testing Brexit Proportions" href="brexit_proportions_solution.html" />
+    <link rel="prev" title="Using the Jupyter Notebooks" href="using_the_notebooks.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -202,6 +202,21 @@ assortment of values from the original list:</p>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">both</span>
 </pre></div>
 </div>
+<p>Let’s check that is working as expected:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make a couple of lists</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Call the function to shuffle the lists</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">join_shuffle_split</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">b_list</span><span class="p">)</span>
+<span class="go">[[0, 99, 99], [0, 0, 99, 99]]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">join_shuffle_split</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">b_list</span><span class="p">)</span>
+<span class="go">[[99, 99, 99], [99, 0, 0, 0]]</span>
+</pre></div>
+</div>
 <p>Now for our permutation test.  We’ve assumed the null hypothesis.  We join the
 lists, and shuffle the combined group.  We’ll call the first 541 values
 <code class="docutils literal notranslate"><span class="pre">group_A</span></code> and the last 774 values <code class="docutils literal notranslate"><span class="pre">group_B</span></code>.</p>
@@ -264,11 +279,11 @@ interactive plots.  If running in the Jupyter Notebook, use <code class="docutil
 <span class="go">(...)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//brexit_ages-23.png">png</a>, <a class="reference external" href=".//brexit_ages-23.hires.png">hires.png</a>, <a class="reference external" href=".//brexit_ages-23.pdf">pdf</a>)</p>
+<p>(<a class="reference external" href=".//brexit_ages-26.png">png</a>, <a class="reference external" href=".//brexit_ages-26.hires.png">hires.png</a>, <a class="reference external" href=".//brexit_ages-26.pdf">pdf</a>)</p>
 <div class="figure">
-<img alt="_images/brexit_ages-23.png" src="_images/brexit_ages-23.png" />
+<img alt="_images/brexit_ages-26.png" src="_images/brexit_ages-26.png" />
 </div>
-<p>The maximumum of these differences is:</p>
+<p>The maximum of these differences is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="n">shuffled_differences</span><span class="p">)</span>
 <span class="go">3.8717109191037764</span>
 </pre></div>
@@ -304,7 +319,7 @@ difference could have come about by differences in random sampling.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="brexit_proportions_solution.html" title="previous chapter">Testing Brexit Proportions</a></li>
+      <li>Previous: <a href="using_the_notebooks.html" title="previous chapter">Using the Jupyter Notebooks</a></li>
       <li>Next: <a href="more_on_lists.html" title="next chapter">More on working with lists</a></li>
   </ul></li>
 </ul>
