@@ -4,6 +4,12 @@ If and For
 
 .. code-links:: clear
 
+.. notes
+
+    Really need else in there somewhere.
+    Consider break.
+    Consider and / or
+
 **
 If
 **

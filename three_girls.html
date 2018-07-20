@@ -61,7 +61,7 @@ between 0 and 1.</p>
 <p>Now we’ll decide if the next child is a boy or a girl.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a random number, decide if it&#39;s a girl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">random_no</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">random_no</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">random_no</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="c1"># A girl</span>
 <span class="gp">... </span>    <span class="n">child</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">... </span><span class="k">else</span><span class="p">:</span>
@@ -80,6 +80,10 @@ of times.</p>
 probability.  On our case we want 1 to have probability 0.5, but maybe we will
 change our minds about that later.  Here’s a template.  Fix it up to return 0
 or 1 with the given probability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># In case you haven&#39;t done this already</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">get_0_or_1</span><span class="p">(</span><span class="n">prob_of_1</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="c1"># Return 0 or 1, where probability of 1 is given by prob_of_1</span>
 <span class="gp">... </span>    <span class="c1"># To start with, we&#39;ll call this function setting prob_of_1 to 0.5</span>
@@ -106,8 +110,7 @@ average of all the results to add up to the given probability.</p>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Got&quot;</span><span class="p">,</span> <span class="n">long_run_prob</span><span class="p">,</span> <span class="s2">&quot;but expected something near&quot;</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now let’s try when the <code class="docutils literal notranslate"><span class="pre">prob_of_1</span></code> is not 0.5.  Do you still get a good
-answer?</p>
+<p>Now let’s try when the <code class="docutils literal notranslate"><span class="pre">prob_of_1</span></code> is not 0.5 (below).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Test cell for get_0_or_1, prob = 0.3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">prob</span> <span class="o">=</span> <span class="mf">0.3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
@@ -120,6 +123,15 @@ answer?</p>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Got&quot;</span><span class="p">,</span> <span class="n">long_run_prob</span><span class="p">,</span> <span class="s2">&quot;but expected something near&quot;</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Do you still get a good answer?  If not, try going to a piece of paper.  Draw
+the interval 0 to 1 as a rectangle and shade in the part that you are looking
+for in your function.</p>
+<p>Do you agree that it is reasonable to check that the average of a large number
+of 0 or 1 samples, with 1 having a given probability, will tend to be the
+given probability?  For example, I’m checking the average of 10000 samples of
+0, 1, with 1 having probability 0.3.  I’m testing that the average is about
+0.3.  Is that reasonable?  How would you make that case to someone who didn’t
+believe you?</p>
 </div>
 <div class="section" id="make-a-family">
 <h2>Make a family<a class="headerlink" href="#make-a-family" title="Permalink to this headline">¶</a></h2>
@@ -142,7 +154,7 @@ function will make a series of children, just like the cell above, then count
 the girls, and return the number of girls.  Like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">girls_in_family</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="c1"># Make a family of 4, return number of girls</span>
-<span class="gp">... </span>    <span class="c1"># Your code here, likeley from the cell above</span>
+<span class="gp">... </span>    <span class="c1"># Your code here, likely from the cell above</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">n_girls</span>
 </pre></div>
 </div>
@@ -177,7 +189,9 @@ and the number of children (up until now, 4).  It would start like this:</p>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">n_girls</span>
 </pre></div>
 </div>
-<p>Modify the test cell above to use this new code.</p>
+<p>Modify the test cell above to use this new code, initially using a probability
+of 0.5 and number of children of 4.  Try adapting the test to check for the
+right answer with other probabilities and other numbers of children.</p>
 </div>
 </div>
 <div class="section" id="how-many-girls">
@@ -197,6 +211,53 @@ of families you made (10000).</p>
 </pre></div>
 </div>
 <p>Run this a few times, to get an idea of the range of answers.</p>
+<div class="section" id="id2">
+<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Up until now, we’ve assumed that the chance that a child is a boy is 0.5.  Now
+assume the proportion of boys born in the UK is 0.513 <a class="footnote-reference" href="#male-births" id="id3">[1]</a>.  Hence
+the proportion of girls is 1-0.513 = 0.487.</p>
+<p>Here is a working function to return the number of girls in a family of 4,
+given a probability of having a girl of 0.5:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">girls_in_family</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="c1"># Make a family of 4, return number of girls</span>
+<span class="gp">... </span>    <span class="c1"># Your code here, likely from the cell above</span>
+<span class="gp">... </span>    <span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">child</span> <span class="o">=</span> <span class="n">get_0_or_1</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">n_girls</span> <span class="o">=</span> <span class="n">children</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">n_girls</span>
+</pre></div>
+</div>
+<p>Here’s the code cell we used above to calculate the number of families with 3
+girls:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">girl_counts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">girl_count</span> <span class="o">=</span> <span class="n">girls_in_family</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">girl_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">girl_count</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proportion</span> <span class="o">=</span> <span class="n">girl_counts</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Estimate for probability of 3 girls is&quot;</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">girls_in_family</span></code> function above to use the actual probability of
+having a girl.</p>
+<p>When you’ve done that, run the cell above to get a more realistic estimate of
+the chances of exactly 3 girls in a family of 4.</p>
+<p>Do you expect the answer to be less or greater than the answer you got when
+the probability was 0.5?</p>
+<p>Given that the correct answer is 0.25, with a probability-of-having-girl of
+0.5, what would be your guess at the correct answer, with a probability of
+0.487?  Why?</p>
+<table class="docutils footnote" frame="void" id="male-births" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td><a class="reference external" href="https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014">Official UK government statistics</a>
+give the birth ratio as 105.3. This the number of boys born for every 100
+girls.  The proportion is therefore 105.3 / (100 + 105.3).</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 
@@ -215,7 +276,10 @@ of families you made (10000).</p>
 <li><a class="reference internal" href="#id1">Exercise</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#how-many-girls">How many girls?</a></li>
+<li><a class="reference internal" href="#how-many-girls">How many girls?</a><ul>
+<li><a class="reference internal" href="#id2">Exercise</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

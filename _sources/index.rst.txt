@@ -61,3 +61,4 @@ algorithms and data analysis at the University of Birmingham.
     if_for
     comparisons
     my_mean
+    sum

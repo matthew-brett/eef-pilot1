@@ -4,6 +4,22 @@ Functions
 
 .. code-links:: clear
 
+.. notes
+
+    Need something on why functions are useful (moving common operations so
+    they can be re-used without retyping) (testing).
+
+    Standard deviation function is too long.  Needs to be simplified to
+
+    mu = my_mean(some_values)
+    sum_of_squares = 0
+    for value in some_values:
+        deviation = value - mu
+        sq_deviation = deviation ** 2
+        sum_of_squares = sum_of_squares + sq_deviation
+    variance = sum_of_squares / len(some_values)
+    return math.sqrt(variance)
+
 Have already seen functions in action, such as ``len`` and ``print``.
 
 Here's ``len`` in action:

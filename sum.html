@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Day 2 &#8212; Tutorials on imaging, computing and mathematics</title>
+    <title>Sum &#8212; Tutorials on imaging, computing and mathematics</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -17,8 +17,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction to Python, via Jupyter" href="python_and_jupyter.html" />
-    <link rel="prev" title="Three girls in a family of four" href="number_of_girls.html" />
+    <link rel="prev" title="My mean" href="my_mean.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,29 +34,22 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="day-2">
-<h1>Day 2<a class="headerlink" href="#day-2" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>Review homework.</li>
-<li>Why functions are useful.</li>
-</ul>
-<div class="section" id="sampling-for-real-problems">
-<h2>Sampling for real problems<a class="headerlink" href="#sampling-for-real-problems" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference internal" href="three_girls.html"><span class="doc">Three girls</span></a></li>
-<li><a class="reference internal" href="plotting.html"><span class="doc">Plotting</span></a></li>
-<li><a class="reference internal" href="sum.html"><span class="doc">Sum</span></a></li>
-<li><a class="reference internal" href="brexit_proportions_exercise.html"><span class="doc">Testing Brexit Proportions</span></a>.</li>
-</ul>
+  <div class="section" id="sum">
+<h1>Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h1>
+<p>It does what it says on the tin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">value</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span>
+<span class="go">25</span>
+</pre></div>
 </div>
-<div class="section" id="afternoon">
-<h2>Afternoon<a class="headerlink" href="#afternoon" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>permutation</li>
-<li><a class="reference internal" href="shuffle.html"><span class="doc">Shuffle</span></a>.</li>
-<li><a class="reference internal" href="slice_list.html"><span class="doc">Slicing lists</span></a></li>
-<li><a class="reference internal" href="brexit_ages.html"><span class="doc">Comparing two groups with permutation testing</span></a></li>
-</ul>
+<p>We can do the same in one line with <code class="docutils literal notranslate"><span class="pre">sum</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+<span class="go">25</span>
+</pre></div>
 </div>
 </div>
 
@@ -67,28 +59,18 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Day 2</a><ul>
-<li><a class="reference internal" href="#sampling-for-real-problems">Sampling for real problems</a></li>
-<li><a class="reference internal" href="#afternoon">Afternoon</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
+        <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="number_of_girls.html" title="previous chapter">Three girls in a family of four</a></li>
-      <li>Next: <a href="python_and_jupyter.html" title="next chapter">Introduction to Python, via Jupyter</a></li>
+      <li>Previous: <a href="my_mean.html" title="previous chapter">My mean</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/day_2.rst.txt"
+      <li><a href="_sources/sum.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -116,7 +98,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
-      <a href="_sources/day_2.rst.txt"
+      <a href="_sources/sum.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

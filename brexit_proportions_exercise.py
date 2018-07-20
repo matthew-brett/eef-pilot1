@@ -18,7 +18,7 @@
 #: brexit proportion in survey
 541 / (541 + 774)
 
-# We also saw that the [final referendum proportion](https://www.electoralcommission.org.uk/find-information-by-subject/elections-and-referendums/past-elections-and-referendums/eu-referendum/electorate-and-count-information)
+# We also know that the [final referendum proportion](https://www.electoralcommission.org.uk/find-information-by-subject/elections-and-referendums/past-elections-and-referendums/eu-referendum/electorate-and-count-information)
 # of Leave / (Leave + Remain) was 0.519.
 #
 # These proprtions seem very different?  But could such a difference have come

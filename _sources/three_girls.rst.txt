@@ -41,7 +41,7 @@ Now we'll decide if the next child is a boy or a girl.
 
     >>> # Get a random number, decide if it's a girl
     >>> random_no = random.random()
-    >>> if random_no > 0.5:
+    >>> if random_no < 0.5:
     ...     # A girl
     ...     child = 1
     ... else:
@@ -65,6 +65,9 @@ or 1 with the given probability.
 
 .. nbplot::
     :hide-from: doctest
+
+    >>> # In case you haven't done this already
+    >>> import random
 
     >>> def get_0_or_1(prob_of_1):
     ...     # Return 0 or 1, where probability of 1 is given by prob_of_1
@@ -107,8 +110,7 @@ average of all the results to add up to the given probability.
     ... else:
     ...     print("Got", long_run_prob, "but expected something near", prob)
 
-Now let's try when the ``prob_of_1`` is not 0.5.  Do you still get a good
-answer?
+Now let's try when the ``prob_of_1`` is not 0.5 (below).
 
 .. nbplot::
 
@@ -122,6 +124,17 @@ answer?
     ...     print("Looks right")
     ... else:
     ...     print("Got", long_run_prob, "but expected something near", prob)
+
+Do you still get a good answer?  If not, try going to a piece of paper.  Draw
+the interval 0 to 1 as a rectangle and shade in the part that you are looking
+for in your function.
+
+Do you agree that it is reasonable to check that the average of a large number
+of 0 or 1 samples, with 1 having a given probability, will tend to be the
+given probability?  For example, I'm checking the average of 10000 samples of
+0, 1, with 1 having probability 0.3.  I'm testing that the average is about
+0.3.  Is that reasonable?  How would you make that case to someone who didn't
+believe you?
 
 *************
 Make a family
@@ -152,7 +165,7 @@ the girls, and return the number of girls.  Like this:
 
     >>> def girls_in_family():
     ...     # Make a family of 4, return number of girls
-    ...     # Your code here, likeley from the cell above
+    ...     # Your code here, likely from the cell above
     ...     return n_girls
 
 .. nbplot::
@@ -161,7 +174,7 @@ the girls, and return the number of girls.  Like this:
 
     >>> def girls_in_family():
     ...     # Make a family of 4, return number of girls
-    ...     # Your code here, likeley from the cell above
+    ...     # Your code here, likely from the cell above
     ...     children = []
     ...     for i in range(4):
     ...         child = get_0_or_1(0.5)
@@ -207,7 +220,9 @@ and the number of children (up until now, 4).  It would start like this:
     ...     # Your code here
     ...     return n_girls
 
-Modify the test cell above to use this new code.
+Modify the test cell above to use this new code, initially using a probability
+of 0.5 and number of children of 4.  Try adapting the test to check for the
+right answer with other probabilities and other numbers of children.
 
 ***************
 How many girls?
@@ -232,3 +247,56 @@ Something like this:
     >>> print("Estimate for probability of 3 girls is", proportion)
 
 Run this a few times, to get an idea of the range of answers.
+
+Exercise
+========
+
+Up until now, we've assumed that the chance that a child is a boy is 0.5.  Now
+assume the proportion of boys born in the UK is 0.513 [#male-births]_.  Hence
+the proportion of girls is 1-0.513 = 0.487.
+
+Here is a working function to return the number of girls in a family of 4,
+given a probability of having a girl of 0.5:
+
+.. nbplot::
+
+    >>> def girls_in_family():
+    ...     # Make a family of 4, return number of girls
+    ...     # Your code here, likely from the cell above
+    ...     children = []
+    ...     for i in range(4):
+    ...         child = get_0_or_1(0.5)
+    ...         children.append(child)
+    ...     n_girls = children.count(1)
+    ...     return n_girls
+
+Here's the code cell we used above to calculate the number of families with 3
+girls:
+
+.. nbplot::
+
+    >>> girl_counts = []
+    >>> for i in range(10000):
+    ...     girl_count = girls_in_family()
+    ...     girl_counts.append(girl_count)
+    ...
+    >>> proportion = girl_counts.count(3) / 10000
+    >>> print("Estimate for probability of 3 girls is", proportion)
+
+Change the ``girls_in_family`` function above to use the actual probability of
+having a girl.
+
+When you've done that, run the cell above to get a more realistic estimate of
+the chances of exactly 3 girls in a family of 4.
+
+Do you expect the answer to be less or greater than the answer you got when
+the probability was 0.5?
+
+Given that the correct answer is 0.25, with a probability-of-having-girl of
+0.5, what would be your guess at the correct answer, with a probability of
+0.487?  Why?
+
+.. [#male-births] `Official UK government statistics
+   <https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014>`_
+   give the birth ratio as 105.3. This the number of boys born for every 100
+   girls.  The proportion is therefore 105.3 / (100 + 105.3).
