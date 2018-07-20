@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on working with lists" href="more_on_lists.html" />
-    <link rel="prev" title="Using the Jupyter Notebooks" href="using_the_notebooks.html" />
+    <link rel="prev" title="Testing Brexit Proportions" href="brexit_proportions_solution.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -186,24 +186,46 @@ the first 10:</p>
 <span class="go">[24, 59, 55, 31, 89, 66, 64, 35, 28, 41]</span>
 </pre></div>
 </div>
-<p>Now for our permutation test.  We’ve assumed the null hypothesis.  We have
-randomly shuffled the combined group.  We’ll call the first 541 values
+<p>To express all this, I’m going to make a function that takes the two lists,
+joins them, shuffles, them and returns two new lists, that have a random
+assortment of values from the original list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Just in case you haven&#39;t imported this already</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">join_shuffle_split</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Pool the lists, shuffle, split into lists of original length</span>
+<span class="gp">... </span>    <span class="n">first_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">pooled</span> <span class="o">=</span> <span class="n">first_list</span> <span class="o">+</span> <span class="n">second_list</span>
+<span class="gp">... </span>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">both</span> <span class="o">=</span> <span class="p">[</span><span class="n">pooled</span><span class="p">[:</span><span class="n">first_len</span><span class="p">],</span> <span class="n">pooled</span><span class="p">[</span><span class="n">first_len</span><span class="p">:]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">both</span>
+</pre></div>
+</div>
+<p>Now for our permutation test.  We’ve assumed the null hypothesis.  We join the
+lists, and shuffle the combined group.  We’ll call the first 541 values
 <code class="docutils literal notranslate"><span class="pre">group_A</span></code> and the last 774 values <code class="docutils literal notranslate"><span class="pre">group_B</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fake_lists</span> <span class="o">=</span> <span class="n">join_shuffle_split</span><span class="p">(</span><span class="n">brexit_ages</span><span class="p">,</span> <span class="n">remain_ages</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group_A</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group_B</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>After the shuffling, the <code class="docutils literal notranslate"><span class="pre">group_A</span></code> group is a random mix of the
 <code class="docutils literal notranslate"><span class="pre">brexit_ages</span></code> and <code class="docutils literal notranslate"><span class="pre">remain_ages</span></code> values, as is the <code class="docutils literal notranslate"><span class="pre">group_B</span></code> group.</p>
-<p>Here is a function that takes the combined list and returns the difference in
-means:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">difference_in_means</span><span class="p">(</span><span class="n">combined_list</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot; Split suffled combind group into two, return mean difference</span>
+<p>Here is a function that takes the original lists, makes <code class="docutils literal notranslate"><span class="pre">group_A</span></code> and
+<code class="docutils literal notranslate"><span class="pre">group_B</span></code>, and returns the difference in means.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">difference_in_means</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot; Shuffle values across lists, calculate difference in means.</span>
 <span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
-<span class="gp">... </span>    <span class="n">group_A</span> <span class="o">=</span> <span class="n">combined_list</span><span class="p">[:</span><span class="mi">541</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="n">group_B</span> <span class="o">=</span> <span class="n">combined_list</span><span class="p">[</span><span class="mi">541</span><span class="p">:]</span>
+<span class="gp">... </span>    <span class="n">fake_lists</span> <span class="o">=</span> <span class="n">join_shuffle_split</span><span class="p">(</span><span class="n">first_list</span><span class="p">,</span> <span class="n">second_list</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">group_A</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">group_B</span> <span class="o">=</span> <span class="n">fake_lists</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">group_B</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">(</span><span class="n">group_A</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s get the difference in means for these new groups, generated by the
 shuffle:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">difference_in_means</span><span class="p">(</span><span class="n">all_ages</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">difference_in_means</span><span class="p">(</span><span class="n">brexit_ages</span><span class="p">,</span> <span class="n">remain_ages</span><span class="p">)</span>
 <span class="go">0.35758261808212666</span>
 </pre></div>
 </div>
@@ -220,10 +242,9 @@ get a large range of values:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shuffled_differences</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># An empty list to store the differences</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">all_ages</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">new_difference</span> <span class="o">=</span> <span class="n">difference_in_means</span><span class="p">(</span><span class="n">all_ages</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">fake_difference</span> <span class="o">=</span> <span class="n">difference_in_means</span><span class="p">(</span><span class="n">brexit_ages</span><span class="p">,</span> <span class="n">remain_ages</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1"># Collect the new mean by adding to the end of the list</span>
-<span class="gp">... </span>    <span class="n">shuffled_differences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_difference</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">shuffled_differences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fake_difference</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This gives us 10000 differences from groups that are compatible with our null
@@ -243,9 +264,9 @@ interactive plots.  If running in the Jupyter Notebook, use <code class="docutil
 <span class="go">(...)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//brexit_ages-21.png">png</a>, <a class="reference external" href=".//brexit_ages-21.hires.png">hires.png</a>, <a class="reference external" href=".//brexit_ages-21.pdf">pdf</a>)</p>
+<p>(<a class="reference external" href=".//brexit_ages-23.png">png</a>, <a class="reference external" href=".//brexit_ages-23.hires.png">hires.png</a>, <a class="reference external" href=".//brexit_ages-23.pdf">pdf</a>)</p>
 <div class="figure">
-<img alt="_images/brexit_ages-21.png" src="_images/brexit_ages-21.png" />
+<img alt="_images/brexit_ages-23.png" src="_images/brexit_ages-23.png" />
 </div>
 <p>The maximumum of these differences is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="n">shuffled_differences</span><span class="p">)</span>
@@ -283,7 +304,7 @@ difference could have come about by differences in random sampling.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="using_the_notebooks.html" title="previous chapter">Using the Jupyter Notebooks</a></li>
+      <li>Previous: <a href="brexit_proportions_solution.html" title="previous chapter">Testing Brexit Proportions</a></li>
       <li>Next: <a href="more_on_lists.html" title="next chapter">More on working with lists</a></li>
   </ul></li>
 </ul>

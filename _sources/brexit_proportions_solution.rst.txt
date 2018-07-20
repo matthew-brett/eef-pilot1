@@ -19,7 +19,7 @@ This gives us a proportion of Leave / (Leave + Remain) of:
     >>> 541 / (541 + 774)
     0.4114068441064639
 
-We also saw that the `final referendum proportion
+We also know that the `final referendum proportion
 <https://www.electoralcommission.org.uk/find-information-by-subject/elections-and-referendums/past-elections-and-referendums/eu-referendum/electorate-and-count-information>`_
 of Leave / (Leave + Remain) was 0.519.
 
@@ -56,14 +56,13 @@ So, how do we make this sampling distribution?
 
 We assume that the probability of selecting a leave voter is actually 0.519.
 
-We adapt our ``girl_or_boy`` function from :doc:`number_of_girls` to return a
-Leave or Remain voter with that proportion:
+We use our ``get_0_or_1`` function from :doc:`three_girls` to return a 1 (for
+Leave voter) or 0 (for Remain voter):
 
 .. nbplot::
 
     >>> #: The random module
     >>> import random
-
 
 .. nbplot::
     :hide-from: all
@@ -74,21 +73,24 @@ Leave or Remain voter with that proportion:
 
 .. nbplot::
 
-    >>> #: function to return a Leave or Remain voter
-    >>> def leave_or_remain():
-    ...     # Return 1 for Leave, 0 for Remain
+    >>> #: The random module
+    >>> def get_0_or_1(prob_of_1):
+    ...     # Return 0 or 1, where probability of 1 is given by prob_of_1
+    ...     # To start with, we'll call this function setting prob_of_1 to 0.5
     ...     random_no = random.random()
-    ...     if random_no < 0.519:
-    ...         our_result = 1
+    ...     if random_no < prob_of_1:
+    ...         result = 1
     ...     else:
-    ...         our_result = 0
-    ...     return our_result
+    ...         result = 0
+    ...     return result
+
+We call it with our desired probability of 1:
 
 .. nbplot::
 
-    >>> #: call the fnction
+    >>> #: call the function
     >>> #: remember the brackets at the end
-    >>> leave_or_remain()
+    >>> get_0_or_1(0.519)
     0
 
 In :doc:`three_girls`, a single trial was four children.  In our case, a
@@ -101,8 +103,9 @@ statistic for each trial:
     >>> def one_proportion():
     ...     votes = []
     ...     for i in range(1315):
-    ...         vote = leave_or_remain()
+    ...         vote = get_0_or_1(0.519)
     ...         votes.append(vote)
+    ...     # We add all the 1s together to get the number of Leave voters
     ...     brexits = sum(votes)
     ...     return brexits / len(votes)
 
@@ -127,8 +130,9 @@ proportion).  This is your job:
 
     >>> #- Make a list to contain the proportion for each trial
     >>> proportions = []
-    >>> #- Make 10000 trials.
-    >>> #- For each trial, calculate the proportion and store it
+    >>> #- Use a for loop to make 10000 trials.
+    >>> #- For each trial, calculate the proportion and store it in the
+    >>> #- "proportions" list.
     >>> #- You now have 10000 proportions.
     >>> for i in range(n_trials):
     ...     proportion = one_proportion()
@@ -151,3 +155,12 @@ Plot the histogram of the sampling distribution you have just collected:
 
 The value we found in our survey data was 0.411.   How likely do you think
 that value is, given the sampling distribution you have just made?
+
+Remember, your job was to get some hard evidence about whether the survey
+company is right to claim that there was no bias in their survey.  So, they
+are claiming that the proportion of 0.41 that they found was a reasonable one
+that could have come about because they were somewhat unlucky in their random
+sample.  How unlucky would they have to be?
+
+Do you have evidence that they did not do a random sample?  That the
+respondents did not answer honestly?  Both?   How can you be sure?

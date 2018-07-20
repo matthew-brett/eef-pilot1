@@ -9,26 +9,28 @@ import random
 #: keep this for exercise built page
 random.seed(1966)
 
-#: function to return a Leave or Remain voter
-def leave_or_remain():
-    # Return 1 for Leave, 0 for Remain
+#: The random module
+def get_0_or_1(prob_of_1):
+    # Return 0 or 1, where probability of 1 is given by prob_of_1
+    # To start with, we'll call this function setting prob_of_1 to 0.5
     random_no = random.random()
-    if random_no < 0.519:
-        our_result = 1
+    if random_no < prob_of_1:
+        result = 1
     else:
-        our_result = 0
-    return our_result
+        result = 0
+    return result
 
-#: call the fnction
+#: call the function
 #: remember the brackets at the end
-leave_or_remain()
+get_0_or_1(0.519)
 
 #: The statistic value from a single trial
 def one_proportion():
     votes = []
     for i in range(1315):
-        vote = leave_or_remain()
+        vote = get_0_or_1(0.519)
         votes.append(vote)
+    # We add all the 1s together to get the number of Leave voters
     brexits = sum(votes)
     return brexits / len(votes)
 
@@ -39,8 +41,9 @@ one_proportion()
 n_trials = 10000
 
 #- Make a list to contain the proportion for each trial
-#- Make 10000 trials.
-#- For each trial, calculate the proportion and store it
+#- Use a for loop to make 10000 trials.
+#- For each trial, calculate the proportion and store it in the
+#- "proportions" list.
 #- You now have 10000 proportions.
 
 #: The stuff you need for plotting a histogram

@@ -17,7 +17,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Slicing lists" href="slice_list.html" />
+    <link rel="next" title="Working with lists" href="slice_list.html" />
     <link rel="prev" title="While loops" href="while_loops.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -63,6 +63,54 @@ order.</p>
 <span class="go">[7, 3, 2, 5, 1]</span>
 </pre></div>
 </div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a cell that makes a list with the names of all the cards in a standard
+52 card pack.  Run it to get a not-shuffled pack of cards.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hearts&#39;</span><span class="p">,</span> <span class="s1">&#39;Diamonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Clubs&#39;</span><span class="p">,</span> <span class="s1">&#39;Spades&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;Ace&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deck</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">card</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="s1">&#39; of &#39;</span> <span class="o">+</span> <span class="n">suit</span>
+<span class="gp">... </span>        <span class="n">deck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Show the first 15 cards in the deck</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deck</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span>
+<span class="go">[&#39;2 of Hearts&#39;,</span>
+<span class="go"> &#39;3 of Hearts&#39;,</span>
+<span class="go"> &#39;4 of Hearts&#39;,</span>
+<span class="go"> &#39;5 of Hearts&#39;,</span>
+<span class="go"> &#39;6 of Hearts&#39;,</span>
+<span class="go"> &#39;7 of Hearts&#39;,</span>
+<span class="go"> &#39;8 of Hearts&#39;,</span>
+<span class="go"> &#39;9 of Hearts&#39;,</span>
+<span class="go"> &#39;10 of Hearts&#39;,</span>
+<span class="go"> &#39;Jack of Hearts&#39;,</span>
+<span class="go"> &#39;Queen of Hearts&#39;,</span>
+<span class="go"> &#39;King of Hearts&#39;,</span>
+<span class="go"> &#39;Ace of Hearts&#39;,</span>
+<span class="go"> &#39;2 of Diamonds&#39;,</span>
+<span class="go"> &#39;3 of Diamonds&#39;]</span>
+</pre></div>
+</div>
+<p>Shuffle the deck with <code class="docutils literal notranslate"><span class="pre">random.shuffle</span></code>.</p>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to shuffle the cards 10000 times.   Your loop might start
+like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># do something</span>
+</pre></div>
+</div>
+<p>Count how many times the <code class="docutils literal notranslate"><span class="pre">&quot;Ace</span> <span class="pre">of</span> <span class="pre">Spades&quot;</span></code> is the first card, after
+shuffling.   What proportion is that?  Is that what you were expecting?  What
+is the exact answer, using probability?</p>
+<p>Again use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop again to shuffle the cards 10000 times.  Count how
+many times the <code class="docutils literal notranslate"><span class="pre">&quot;Ace</span> <span class="pre">of</span> <span class="pre">Spades&quot;</span></code> is either the first card or the second
+card.   What proportion is that?  Can you calculate what the exact answer is,
+using probability?</p>
+</div>
 </div>
 
 
@@ -71,12 +119,20 @@ order.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Shuffle</a><ul>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="while_loops.html" title="previous chapter">While loops</a></li>
-      <li>Next: <a href="slice_list.html" title="next chapter">Slicing lists</a></li>
+      <li>Next: <a href="slice_list.html" title="next chapter">Working with lists</a></li>
   </ul></li>
 </ul>
 </div>

@@ -54,25 +54,28 @@
 #
 # We assume that the probability of selecting a leave voter is actually 0.519.
 #
-# We adapt our `girl_or_boy` function from [Three girls in a family of four](https://matthew-brett.github.io/les-pilot/number_of_girls.html) to return a
-# Leave or Remain voter with that proportion:
+# We use our `get_0_or_1` function from [Three girls](https://matthew-brett.github.io/les-pilot/three_girls.html) to return a 1 (for
+# Leave voter) or 0 (for Remain voter):
 
 #: The random module
 import random
 
-#: function to return a Leave or Remain voter
-def leave_or_remain():
-    # Return 1 for Leave, 0 for Remain
+#: The random module
+def get_0_or_1(prob_of_1):
+    # Return 0 or 1, where probability of 1 is given by prob_of_1
+    # To start with, we'll call this function setting prob_of_1 to 0.5
     random_no = random.random()
-    if random_no < 0.519:
-        our_result = 1
+    if random_no < prob_of_1:
+        result = 1
     else:
-        our_result = 0
-    return our_result
+        result = 0
+    return result
 
-#: call the fnction
+# We call it with our desired probability of 1:
+
+#: call the function
 #: remember the brackets at the end
-leave_or_remain()
+get_0_or_1(0.519)
 
 # In [Three girls](https://matthew-brett.github.io/les-pilot/three_girls.html), a single trial was four children.  In our case, a
 # single trial is 1315 Leave or Remain voters drawn at random. We calculate the
@@ -82,8 +85,9 @@ leave_or_remain()
 def one_proportion():
     votes = []
     for i in range(1315):
-        vote = leave_or_remain()
+        vote = get_0_or_1(0.519)
         votes.append(vote)
+    # We add all the 1s together to get the number of Leave voters
     brexits = sum(votes)
     return brexits / len(votes)
 
@@ -100,8 +104,9 @@ one_proportion()
 n_trials = 10000
 
 #- Make a list to contain the proportion for each trial
-#- Make 10000 trials.
-#- For each trial, calculate the proportion and store it
+#- Use a for loop to make 10000 trials.
+#- For each trial, calculate the proportion and store it in the
+#- "proportions" list.
 #- You now have 10000 proportions.
 
 # If running in the IPython console, consider running `%matplotlib` to enable
@@ -117,3 +122,12 @@ import matplotlib.pyplot as plt
 
 # The value we found in our survey data was 0.411.   How likely do you think
 # that value is, given the sampling distribution you have just made?
+#
+# Remember, your job was to get some hard evidence about whether the survey
+# company is right to claim that there was no bias in their survey.  So, they
+# are claiming that the proportion of 0.41 that they found was a reasonable one
+# that could have come about because they were somewhat unlucky in their random
+# sample.  How unlucky would they have to be?
+#
+# Do you have evidence that they did not do a random sample?  That the
+# respondents did not answer honestly?  Both?   How can you be sure?

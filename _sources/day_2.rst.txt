@@ -13,14 +13,9 @@ Sampling for real problems
 * :doc:`plotting`
 * :doc:`sum`
 * :doc:`brexit_proportions_exercise`.
-
-*********
-Afternoon
-*********
-
-* permutation
-* :doc:`shuffle`.
 * :doc:`slice_list`
+* :doc:`shuffle`.
+* Adding lists.
 * :doc:`brexit_ages`
 
 .. include:: links_names.inc

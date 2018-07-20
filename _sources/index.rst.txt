@@ -62,3 +62,4 @@ algorithms and data analysis at the University of Birmingham.
     comparisons
     my_mean
     sum
+    checklist
