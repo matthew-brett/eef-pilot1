@@ -198,7 +198,7 @@ assortment of values from the original list:
     ...     first_len = len(first_list)
     ...     pooled = first_list + second_list
     ...     random.shuffle(pooled)
-    ...     both = [pooled[:first_len], pooled[first_len:]
+    ...     both = [pooled[:first_len], pooled[first_len:]]
     ...     return both
 
 Now for our permutation test.  We've assumed the null hypothesis.  We join the
