@@ -23,7 +23,7 @@ Notebooks from class
 ********************
 
 * :download:`if_and_for_futz.ipynb`
-* :download:`function_futz.ipynb`
+* :download:`functions_futz.ipynb`
 
 ********
 Homework
