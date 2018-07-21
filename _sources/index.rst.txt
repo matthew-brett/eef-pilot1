@@ -63,3 +63,4 @@ algorithms and data analysis at the University of Birmingham.
     my_mean
     sum
     checklist
+    chick_testing
