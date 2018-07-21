@@ -19,6 +19,16 @@ Sampling for real problems
 * :doc:`brexit_ages`
 * :doc:`chick_testing`.
 
+******************
+Notebooks in class
+******************
+
+* :doc:`str_name_futz.ipynb`
+* :doc:`random_0_or_1_futz.ipynb`
+* :doc:`list_slice_futz.ipynb`
+* :doc:`shuffle_in_class.ipynb`
+* :doc:`brexit_ages_in_class.ipynb`
+
 **********
 End of day
 **********
